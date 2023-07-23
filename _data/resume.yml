@@ -37,6 +37,8 @@ work:
     summary: >
       스타트 기업으로 사무보조로 군대가기 전 잠시 일하게 되었습니다. 사무보조에서 한달 뒤
       검수자 역할을 하게 되었습니다.
+    highlights:
+     - "?"
     
     - company: "NHN Payco"
     position: "인턴/Python개발자"
@@ -44,9 +46,9 @@ work:
     startDate: "2022-06-01"
     endDate: "2023-08-27"
     summary: >
-      일
-    #highlights:
-    #  - "Build an algorithm for artist to detect if their music was violating copy right infringement laws"
+      일일
+    highlights:
+     - "?"
 
 
 
