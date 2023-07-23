@@ -16,10 +16,11 @@ basics:
    
   location:
     address: "275 Dongpangyo-ro"
-    postalCode: "Bundang-gu"
+    postalCode: "SeongNamSi"
     city: "Gyeonggi-do"
-    countryCode: "US"
-    region: "Republic of Korea"
+    countryCode: "KR"
+    region: "Bundang-gu"
+    
   profiles:
     - network: "Github"
       username: "Yongmining"
