@@ -1,0 +1,88 @@
+# If you have a `resume.json` file, copy it into `_data` and delete this file.
+# If you don't have a JSON Resume you can just edit this YAML file instead.
+# See also: <https://jsonresume.org/>.
+basics:
+  name: "Yong-Min KIM"
+  label: "Backend Programmer"
+  picture: assets/img/me.jpg
+  email: "gpsyo911@naver.com"
+  phone: "010 - 6680 - 3696"
+  github: "https://github.com/yongmining_"
+  summary: >
+    **안녕하세요 신입 개발자 김용민 입니다.** <br>
+    **수원과학대를 나오고 6개월간 정부에서 지원해주는** <br>
+    **블록체인/JAVA 수업을 들었습니다.** <br>
+    **현재는 CS 공부와 포트폴리오를 만들며 공부하고있습니다.** 
+   
+  location:
+    address: "275 Dongpangyo-ro"
+    postalCode: "Bundang-gu"
+    city: "Gyeonggi-do"
+    countryCode: "US"
+    region: "Republic of Korea"
+  profiles:
+    - network: "Github"
+      username: "Yongmining"
+      url: "https://github.com/yongmining"
+    - network: "Instagram"
+      username: "Yongmining_"
+      url: "https://instagram.com/yongmining_"
+
+work:
+  - company: "Pied Piper"
+    position: "CEO/President"
+    website: "https://piedpiper.com"
+    startDate: "2013-12-01"
+    endDate: ""
+    summary: >
+      Pied Piper is a multi-platform technology based on a proprietary universal compression algorithm that has
+      consistently fielded high Weisman Scores™ that are not merely competitive,
+      but approach the theoretical limit of lossless compression.
+    highlights:
+      - "Build an algorithm for artist to detect if their music was violating copy right infringement laws"
+      - "Successfully won Techcrunch Disrupt"
+      - "Optimized an algorithm that holds the current world record for Weisman Scores"
+
+education:
+  - institution: "Suwon Science College"
+    area: "Computer Information Division"
+    studyType: ""
+    startDate: "Mar.2020"
+    endDate: "Feb.2023"
+    gpa: "3.4"
+    courses:
+      - Visual basic
+      - Database System, Oracle
+      - Python
+      - Java
+      - C+
+publications:
+  - name: "DDbnb 댕댕비엔비"
+    publisher: "Team 5"
+    releaseDate: "2023-07-14"
+    website: "https://github.com"
+    summary: "댕댕비앤비로 소셜 로그인을 통한 펫시터, 펫맘 모집 게시판 작성하여 신청자를 구하는 프로젝트이다."
+project:
+  - name: "DDbnb 댕댕비엔비"
+    publisher: "Team 5"
+    releaseDate: "2023-07-14"
+    website: "https://github.com"
+    summary: "댕댕비앤비로 소셜 로그인을 통한 펫시터, 펫맘 모집 게시판 작성하여 신청자를 구하는 프로젝트이다."
+skills:
+  - name: "Web Development"
+    level: "Master"
+    keywords:
+      - "Oracle"
+      - "Node.js"
+      - "Javascript"
+      - "FrameWork"
+      - "Java"
+languages:
+  - language: "English"
+    fluency: "Native speaker"
+interests:
+  - name: "Computer Vision"
+    keywords:
+      - "Python"
+      - "C++"
+      - "DeepRunning"
