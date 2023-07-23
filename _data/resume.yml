@@ -28,8 +28,8 @@ basics:
       username: "Yongmining_"
       url: "https://instagram.com/yongmining_"
 
-work:
-  - company: "다함케이앤비"
+  work:
+    - company: "다함케이앤비"
     position: "검수자 / 사무보조"
     website: "https://github.com"
     startDate: "2020-06-01"
