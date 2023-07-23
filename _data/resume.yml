@@ -28,8 +28,8 @@ basics:
       username: "Yongmining_"
       url: "https://instagram.com/yongmining_"
 
-  work:
-    - company: "다함케이앤비"
+work:
+  - company: "다함케이앤비"
     position: "검수자 / 사무보조"
     website: "https://github.com"
     startDate: "2020-06-01"
@@ -38,7 +38,7 @@ basics:
       스타트 기업으로 사무보조로 군대가기 전 잠시 일하게 되었습니다. 사무보조에서 한달 뒤
       검수자 역할을 하게 되었습니다.
     
-    - company: "NHN Payco"
+  - company: "NHN Payco"
     position: "인턴/Python개발자"
     website: "https://github.com"
     startDate: "2022-06-01"
@@ -47,8 +47,6 @@ basics:
       일일
     #highlights:
     # - "?"
-
-
 
 education:
   - institution: "Suwon Science College"
