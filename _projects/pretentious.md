@@ -4,6 +4,7 @@ date:         14 Jul 2023
 title:        DDbnb 댕댕비엔비
 caption:      펫시터, 펫맘 모집 게시판
 description:  >
+    🖼️ DDbnb  
 image:        /assets/img/projects/DDbnbSitter.jpg
 screenshot:
   src:        /assets/img/projects/DDbnbSitter.jpg
