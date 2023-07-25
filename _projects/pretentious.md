@@ -448,6 +448,561 @@ public class LoginService {
 **코딩 설명**
 
 
+# 프로필 등록, 수정
+## FrontEnd
+## 탈퇴 기능
+### `MemberAPICalls.js`
+~~~yml
+/* 현재 로그인 된 멤버 정보 가져오기 */
+export const getCurrentMember = (memberId) => {
+
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/member/${memberId}`;
+    return async (dispatch, getState) => {
+
+        const result = await fetch(requestURL, {
+            method: 'GET',
+            headers: {
+                "Content-Type": 'application/json',
+                "Accept": '*/*'
+            }
+        }).then(res => res.json());
+
+        if (result.status === 200) {
+            dispatch({ type: GET_MEMBER, payload: result.data.members });
+            if (result.data.members.nickname.startsWith("새로운회원")) {
+                return "새로운회원";
+            }
+        }
+    };
+}
+
+/* 현재 로그인 된 멤버 정보 업데이트 */
+export const getUpdateMember = (memberId, form) => {
+
+    const token = JSON.parse(window.localStorage.getItem('accessToken'));
+
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/member/${token.memberId}/postprofile`;
+    return async (dispatch, getState) => {
+
+        const result = await fetch(requestURL, {
+            method: 'PUT',
+            headers: {
+                "Accept": '*/*',
+                "Auth": token
+            },
+            body: form// 업데이트할 데이터를 JSON 문자열로 변환하여 요청에 포함
+        }).then(res => res.json());
+
+        if (result.status === 201) {
+            dispatch({ type: PUT_MEMBER, payload: result.data });
+            alert(result.message);
+            window.location.href = `/mypage/${memberId}`;
+        }
+    };
+}
+
+/* 현재 로그인 된 멤버가 탈퇴 */
+export const deleteMember = (memberId) => {
+
+    const token = JSON.parse(window.localStorage.getItem('accessToken'));
+
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/member/${token.memberId}`
+
+    return async (dispatch, getState) => {
+
+        const result = await fetch(requestURL, {
+            method: 'DELETE',
+            headers: {
+                "Content-Type": 'application/json',
+                "Accept": '*/*',
+                "Auth": token
+            },
+        })
+
+        if (result.status === 200) {
+            dispatch({ type: DELETE_MEMBER, payload: result.data });
+            dispatch({ type: IS_LOGIN });
+            window.localStorage.removeItem('accessToken');
+            window.location.reload();
+        }
+    };
+}
+
+~~~
+**코딩 설명**
+
+### `LoginProfilePage.js, ReviseProfilePage.js`
+~~~yml
+import style from './ProfileStyle.module.css';
+import { IoIosFemale } from 'react-icons/io';
+import { IoIosMale } from 'react-icons/io';
+import { useNavigate, useParams } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCurrentMember, getUpdateMember } from '../../api/MemberAPICalls';
+import { useEffect } from "react";
+import "../../component/modal/review/review.css";
+
+function ReviseProfilePage() {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const { memberId } = useParams();
+    const members = useSelector(store => store.memberReducer);
+
+    const [form, setForm] = useState({
+        nickname: "",
+        experience: "",
+        preferredArea: "",
+        detailedHistory: "",
+        petSitterCareer: "",
+    });
+
+    const [image, setImage] = useState()
+
+    useEffect(
+        () => {
+            dispatch(getCurrentMember(memberId))
+        }
+        , []
+    );
+
+    useEffect(
+        () => {
+            setForm(members);
+        }
+        , [members]
+    );
+
+    const handleAction = () => {
+        navigate("/mypage", { replace: true });
+    }
+
+    const handleActions = () => {
+        const memberId = members?.memberId;
+
+        const formData = new FormData();
+
+        formData.append("newProfile", new Blob([JSON.stringify(form)], { type: "application/json" }));
+
+        if (image) {
+            formData.append("image", image);
+        }
+
+        dispatch(getUpdateMember(memberId, formData));
+        // navigate(`/mypage/${memberId}`, { replace: true });
+    }
+
+    const [previewImage, setPreviewImage] = useState(null);
+
+    const onChangeHandler = (e) => {
+        let value = e.target.value;
+        // 닉네임 글자수 제한을 5글자로 설정
+        if (e.target.name === 'nickname') {
+            value = value.substring(0, 5);
+        }
+        setForm({
+            ...form,
+            [e.target.name]: value
+        });
+    };
+    const handleImageUpload = (event) => {
+        const file = event.target.files[0];
+        setImage(file);
+        setPreviewImage(URL.createObjectURL(file));
+    };
+
+    /* 성별 아이콘 */
+    function GenderIcon() {
+        if (members?.gender === 'female' || members?.gender === 'F') {
+            return <IoIosFemale />
+        } else {
+            return <IoIosMale />
+        }
+    }
+    /* 소셜 로그인 아이콘 */
+    function SocialIcon() {
+        if (members?.socialLogin === "KAKAO") {
+            return <img src='../../../img/kakao_logo.png' alt='kakao logo' width={'30px'} height={'27px'} />
+        }
+        if (members?.socialLogin === 'NAVER') {
+            return <img src='../../../img/naver_logo.png' alt='naver logo' width={'30px'} height={'27px'} />
+        }
+    }
+    return (
+        <div className={style.profileContainer}>
+            <div>
+                <h2>{SocialIcon()} 프로필 수정  </h2>
+                <hr />
+            </div>
+            <div className={style.profileBox}>
+                <img src={previewImage || members?.profileImage} alt='profile' className={style.profileImageBox} />
+                <div className={style.profileImageContent}>
+                    <label>{members?.nickname}</label>
+                    &nbsp;
+                    성별
+                    &nbsp;
+                    <label className={style.Gender}>{GenderIcon()}</label>
+                    <div>
+                        <input
+                            type="file"
+                            id="imageUpload"
+                            accept='image/jpg,image/png,image/jpeg,image/gif'
+                            style={{ display: "none" }}
+                            onChange={handleImageUpload}
+                        />
+                        <label className="yellow reviewmodal-imgbtn" htmlFor="imageUpload">
+                            +
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <hr />
+                <br />
+            </div>
+
+            <div className={style.profiles}>
+                <div className={style.profileCareer}>
+                    닉네임
+                </div>
+                <div style={{ width: '70%' }}>
+                    <input className={style.underLine}
+                        type="text"
+                        name='nickname'
+                        value={form.nickname}
+                        onChange={onChangeHandler}
+                        maxLength={5}
+                    />
+                </div>
+            </div>
+
+            <div className={style.profiles}>
+                <div className={style.profileCareer}>
+                    경험견종
+                </div>
+                <div style={{ flexDirection: 'column', width: '70%' }}>
+                    <input className={style.underLine}
+                        type="text"
+                        name='experience'
+                        value={form.experience}
+                        onChange={onChangeHandler}
+                    />
+                </div>
+            </div>
+
+            <div className={style.profiles}>
+                <div className={style.profileCareer}>
+                    펫시터 경력
+                </div>
+                <div style={{ width: '70%' }}>
+                    <input className={style.underLine}
+                        type="text"
+                        name='petSitterCareer'
+                        value={form.petSitterCareer}
+                        onChange={onChangeHandler} />
+                </div>
+            </div>
+
+            <div className={style.profiles}>
+                <div className={style.profileCareer}>
+                    선호 지역
+                </div>
+                <div style={{ width: '70%' }}>
+                    <input className={style.underLine}
+                        type="text"
+                        name='preferredArea'
+                        value={form.preferredArea}
+                        onChange={onChangeHandler} />
+                </div>
+            </div>
+
+            <div className={style.profiles}>
+                <div className={style.profileCareer}>
+                    상세 이력
+                </div>
+                <div style={{ width: '70%' }}>
+                    <textarea className={style.textareabox}
+                        type="text"
+                        name='detailedHistory'
+                        value={form.detailedHistory}
+                        onChange={onChangeHandler}
+                    />
+                </div>
+            </div>
+
+            <div className={style.btnSet}>
+                <button className={style.btnStyleCancle} onClick={handleAction}>
+                    취소
+                </button>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button className={style.btnStyleInsert} onClick={handleActions}>
+                    수정
+                </button>
+            </div>
+            <br />
+        </div>
+    )
+}
+
+export default ReviseProfilePage;
+~~~
+**코딩 설명**
+
+
+## BackEnd
+### `MemberController.java`
+~~~yml
+@ApiOperation(value = "멤버 소셜 id로 조회")
+    @GetMapping("/members/{socialLogin}/{socialId}")
+    public ResponseEntity<ResponseDTO> findBySocialId(@PathVariable String social_Login,
+                                                      @PathVariable String social_Id) {
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
+
+        Member foundMember = memberService.findBySocialId(social_Login, social_Id);
+
+        Map<String, Object> responseMap = new HashMap<>();
+        responseMap.put("member", foundMember);
+
+        return ResponseEntity.ok().headers(headers).body(new ResponseDTO(HttpStatus.OK, "소셜 아이디 검색 성공", responseMap));
+    }
+
+        @ApiOperation("프로필 등록")
+    @PutMapping("/member/{memberId}/postprofile")
+    public ResponseEntity<ResponseDTO> updateprofile(@PathVariable long memberId,
+                                                     @RequestPart("newProfile") MemberSimpleDTO memberSimpleDTO,
+                                                     @RequestPart(value = "image", required = false) MultipartFile image) {
+
+
+        return ResponseEntity.ok()
+                             .body(new ResponseDTO(HttpStatus.CREATED, "프로필 수정 성공",
+                                                   memberService.updateprofile(memberId, memberSimpleDTO, image)));
+
+    }
+        @DeleteMapping("/member/{memberId}")
+    public ResponseEntity<?> deleteMember(@PathVariable long memberId) {
+
+        memberService.deleteMember(memberId);
+
+        return ResponseEntity.noContent().build();
+    }
+
+~~~
+**코딩 설명**
+
+### `MemberDTO.java, MemberSimpleDTO.java`
+~~~yml
+@AllArgsConstructor
+@NoArgsConstructor
+@Setter
+@Getter
+@ToString
+public class MemberDTO {
+
+    private long memberId;
+    private String nickname;
+    private String profileImage;
+    private String gender;
+
+    private String experience;
+    private String preferredArea;
+    private String petSitterCareer;
+    private String detailedHistory;
+
+    private String starPoint;
+    private String status;
+    private int reportedCount;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private LocalDate signDate;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private LocalDate deletedDate;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private LocalDate lastVisitDate;
+
+    private String socialLogin;
+    private String socialId;
+    private String accessToken;
+    private long accessTokenExpireDate;
+    private String refreshToken;
+    private long refreshTokenExpireDate;
+}
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Setter
+@Getter
+@ToString
+public class MemberSimpleDTO {
+
+    private long memberId;
+    private String nickname;
+    private String profileImage;
+    private String gender;
+
+    private String experience;
+    private String preferredArea;
+    private String petSitterCareer;
+    private String detailedHistory;
+
+    private String starPoint;
+    private String status;
+    private int reportedCount;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private LocalDate signDate;
+
+    private String socialLogin;
+}
+~~~
+**코딩 설명**
+
+### `Member.java`
+~~~yml
+@AllArgsConstructor
+@NoArgsConstructor
+@Setter
+@Getter
+@ToString
+@Entity(name = "Member")
+@Table(name = "MEMBER")
+@SequenceGenerator(name = "member_sequence_generator", sequenceName = "sequence_member_id", initialValue = 1, allocationSize = 50)
+public class Member {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "member_sequence_generator")
+    @Column(name = "MEMBER_ID")
+    private long memberId;
+
+    @Column(name = "nickname", unique = true, nullable = false)
+    private String nickname;
+
+    @Column(name = "experience")
+    private String experience;
+
+    @Column(name = "profile_image")
+    private String profileImage;
+
+    @Column(name = "reported_count", nullable = false)
+    private int reportedCount;
+
+    @Column(name = "social_login", nullable = false)
+    private String socialLogin;
+
+    @Column(name = "social_id", nullable = false)
+    private String socialId;
+
+    @Column(name = "access_token", nullable = false)
+    private String accessToken;
+
+    @Column(name = "access_token_expire_date", nullable = false)
+    private long accessTokenExpireDate;
+
+    @Column(name = "refresh_token", nullable = false)
+    private String refreshToken;
+
+    @Column(name = "refresh_token_expire_date", nullable = false)
+    private long refreshTokenExpireDate;
+
+    @Column(name = "gender")
+    private String gender;
+
+    @Column(name = "sign_date", nullable = false)
+    private LocalDate signDate;
+
+    @Column(name = "deleted_date")
+    private LocalDate deletedDate;
+
+    @Column(name = "preferred_area")
+    private String preferredArea;
+
+    @Column(name = "pet_sitter_career")
+    private String petSitterCareer;
+
+    @Column(name = "detailed_history")
+    private String detailedHistory;
+
+    @Column(name = "star_point")
+    private String starPoint;
+
+    @Column(name = "status")
+    private String status;
+
+    @Column(name = "LAST_VISIT_DATE")
+    private LocalDate lastVisitDate;
+}
+~~~
+**코딩 설명**
+
+### `MemberRepository.java`
+~~~yml
+public interface MemberRepository extends JpaRepository<Member, Long> {
+
+    @Query("SELECT m FROM Member AS m WHERE m.socialLogin LIKE :socialLogin AND m.socialId LIKE :socialId")
+    Member findBySocialId(String socialLogin, String socialId);
+    }
+~~~
+**코딩 설명**
+
+### `MemberService.java`
+~~~yml
+@Service
+@AllArgsConstructor
+public class MemberService {   
+   
+   //일부 멤버 조회
+    public MemberSimpleDTO findMemberById(long memberId) {
+
+        Member foundMember = memberRepository.findById(memberId).get();
+        return modelMapper.map(foundMember, MemberSimpleDTO.class);
+    }
+
+    private final MemberMapper memberMapper;
+    private final MemberRepository memberRepository;
+    private final ModelMapper modelMapper;
+    private final FileUploadUtils fileUploadUtils;
+
+    @Transactional
+    public long registNewUser(MemberDTO newMember) {
+        newMember.setNickname("새로운회원" + (Math.random() * 100 + 1));
+        return memberRepository.save(modelMapper.map(newMember, Member.class)).getMemberId();
+    }
+
+    @Transactional
+    public MemberSimpleDTO updateprofile(long memberId, MemberSimpleDTO updateMember, MultipartFile image) {
+
+        Member member = memberRepository.findById(memberId).get();
+
+        member.setNickname(updateMember.getNickname());
+        member.setPetSitterCareer(updateMember.getPetSitterCareer());
+        member.setExperience(updateMember.getExperience());
+        member.setDetailedHistory(updateMember.getDetailedHistory());
+        member.setPreferredArea(updateMember.getPreferredArea());
+
+        if (image != null) {
+            try {
+                String replaceFileName = fileUploadUtils.saveFile(image);
+                member.setProfileImage(replaceFileName);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        return modelMapper.map(member, MemberSimpleDTO.class);
+    }
+
+    @Transactional
+    public void deleteMember(long memberId) {
+
+        Member foundMember = memberRepository.findById(memberId).get();
+
+        memberRepository.delete(foundMember);
+    }
+~~~
+**코딩 설명**
+
+
 
 
 ![Typeface](../assets/img/pretentious-1.jpg){:.lead}
