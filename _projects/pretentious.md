@@ -37,15 +37,34 @@ accent_image: /assets/img/sidebar-bg.jpg
 **AccessToken을 받아서 프로필 생성, 수정 기능** <br>
 **CI & CD 구축과 AWD 배포 최적화**
 
+# Frontend CODE.
 ### `_config.yml`
 
 ~~~yml
-google_fonts:          Playfair+Display+SC:700|PT+Serif:400,400i,700,700i
-font:                  "'PT Serif', Georgia, serif"
-font_heading:          "'Playfair Display SC', Georgia, serif"
+import { IS_LOGIN } from "../modules/LoginModule";
 
-accent_image:          /assets/img/sidebar-bg.jpg
-accent_color:          '#a85641'
+export const callKakaoLoginAPI = (code) => {
+
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/login/kakaocode`;
+
+    return async (dispatch, getState) => {
+
+        let data = { code: code }
+
+        const result = await fetch(requestURL, {
+            method: 'POST',
+            headers: {
+                "Content-Type": 'application/json',
+                "Accept": '*/*'
+            },
+            body: JSON.stringify(data)
+        }).then(res => res.json());
+        if (result.status === 200) {
+            window.localStorage.setItem('accessToken', JSON.stringify(result.data.token));
+            dispatch({ type: IS_LOGIN });
+        }
+    };
+}
 ~~~
 **코딩 설명**
 
