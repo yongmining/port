@@ -1002,6 +1002,175 @@ public class MemberService {
 ~~~
 **코딩 설명**
 
+# CI & CD , AWD 설계와 구축
+## FRONT WORKFLOW 설정
+### `workflow.yml`
+~~~yml
+name: React build
+
+on: 
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code.   # 레포지토리 체크아웃
+        uses: actions/checkout@master
+
+      - name: Cache node modules      # node modules 캐싱
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.OS }}-build-
+            ${{ runner.OS }}-
+            
+      - name: Generate Environment Variables File for Production  # 환경 변수 파일 생성
+        env:
+          REACT_APP_KAKAO_REST_API_KEY: ${{ secrets.REACT_APP_KAKAO_REST_API_KEY }}
+          REACT_APP_KAKAO_JS_KEY: ${{ secrets.REACT_APP_KAKAO_JS_KEY }}
+          # REACT_APP_NAVER_REST_API_KEY: ${{ secrets.REACT_APP_NAVER_REST_API_KEY }}
+          # REACT_APP_NAVER_JS_KEY: ${{ secrets.REACT_APP_NAVER_JS_KEY }}
+        run: |
+          echo "REACT_APP_KAKAO_REST_API_KEY=$REACT_APP_KAKAO_REST_API_KEY">> .env.production
+          echo "REACT_APP_KAKAO_JS_KEY=$REACT_APP_KAKAO_JS_KEY" >> .env.production
+          # echo "REACT_APP_NAVER_REST_API_KEY=$REACT_APP_NAVER_REST_API_KEY">> .env.production
+          # echo "REACT_APP_NAVER_JS_KEY=$REACT_APP_NAVER_JS_KEY" >> .env.production
+          echo "hi ??"
+
+      - name: Install Dependencies    # 의존 파일 설치
+        run: npm install
+
+      - name: Build                   # React Build
+        run: CI='' npm run build
+
+      - name: Deploy                  # S3에 배포하기
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: |
+          aws s3 cp \
+            --recursive \
+            --region ap-northeast-2 \
+            build s3://ddbnb-front   #자신의 레포지토리로 변경해주세요.
+
+      - name: CloudFront 캐시 무력화 설정
+        uses: chetan/invalidate-cloudfront-action@v2
+        env:
+          DISTRIBUTION: ${{ secrets.AWS_CLOUDFRONT_ID }}
+          PATHS: "/*"
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+~~~
+**코딩 설명**
+
+## Backend
+### `gradle.yml`
+~~~yml
+name: Java CI & CD
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+          
+      ## create application-prod.properties
+      - name: make application.yml
+        run: |
+          cd ./src/main/resources
+          touch ./application.yml
+          echo "${{ secrets.PROPERTIES_FILE }}" > ./application.yml
+        shell: bash
+          
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+        
+      - name: Build with Gradle
+        run: ./gradlew bootjar
+        
+      ## 웹 이미지 빌드 및 도커허브에 push
+      - name: web docker build and push
+        run: |
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          docker build -t ${{ secrets.DOCKER_REPO }}/ddbnb ./
+          docker push ${{ secrets.DOCKER_REPO }}/ddbnb:latest
+      - name: Get timestamp
+        uses: gerred/actions/current-time@master
+        id: current-time
+
+      - name: Run string replace
+        uses: frabert/replace-string-action@master
+        id: format-time
+        with:
+          pattern: '[:\.]+'
+          string: "${{ steps.current-time.outputs.time }}"
+          replace-with: '-'
+          flags: 'g'
+
+      - name: Deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          script: |
+            docker pull ${{ secrets.DOCKER_REPO }}/ddbnb:latest
+            docker rm -f $(docker ps -a -q)
+            docker run -d --name ddbnb -p 8080:8080 ${{ secrets.DOCKER_REPO }}/ddbnb:latest
+~~~
+**코딩 설명**
+### `DockerFile`
+~~~yml
+FROM openjdk:11
+LABEL authors="daeng"
+ARG JAR_FILE=build/libs/*.jar
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["java", "-jar", "app.jar"]
+~~~
+**코딩 설명**
+
+### `Docker.aws.json`
+~~~yml
+{
+  "AWSEBDockerrunVersion": "2",
+  "Image": {
+    "Name": "heemanher/ddbnb",
+    "Update": "true"
+  },
+  "Ports": [
+    {
+      "ContainerPort": 8080,
+      "HostPort": 8080
+    }
+  ]
+}
+~~~
+**코딩 설명**
+
+# 프로젝트 후기
+***저는***
+
 
 
 
