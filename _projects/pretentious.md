@@ -19,10 +19,7 @@ featured:     true
 accent_color: '#a85641'
 accent_image: /assets/img/sidebar-bg.jpg
 ---
-<hr>
-
-
-
+___
 ## 프로젝트 설명
 **DDbnb 댕댕비엔비로 소셜 로그인을 통하여** <br>
 **자신의 애견동물을 돌봐주는 사람을 모집하는 펫시터,** <br>
@@ -30,19 +27,19 @@ accent_image: /assets/img/sidebar-bg.jpg
 **신청목록에서 신청자의 정보를 보고 쪽지를 통해 협의하고 확정, 경험한 뒤 리뷰를 작성하게 됩니다.** <br>
 **마이페이지에서는 자신의 경력과 정보들을 작성하며 볼 수 있으며,** <br>
 **지금까지 작성 된 리뷰와 별점이 보이기에 신용성을 확인 할 수 있습니다.**
-
-
+___
 ## 맡은 역할
 **DBA 데이터베이스 구축 설계** <br>
 **소셜 로그인, 로그아웃, 탈퇴 기능** <br>
 **AccessToken을 받아서 프로필 생성, 수정 기능** <br>
 **CI & CD 구축과 AWD 배포 최적화**
-
+___
 # LOGIN 관련 CODE.
+___
 ## Frontend CODE.
 ### `LoginPage.js`
 
-~~~yml
+~~~java
 import style from './MainStyle.module.css';
 
 const KAKAO_REST_API_KEY = '202bf1013addf514255b52a8c9c69ebf';
@@ -86,9 +83,9 @@ function LoginPage() {
 export default LoginPage;
 ~~~
 **코딩 설명**
-
+___
 ### `KakaoPage.js`
-~~~yml
+~~~java
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { callKakaoLoginAPI } from "../../api/LoginAPI";
@@ -121,10 +118,9 @@ function KakaoPage() {
 export default KakaoPage;
 ~~~
 **코딩 설명**
-
+___
 ### `LoginAPi.js`
-
-~~~yml
+~~~java
 import { IS_LOGIN } from "../modules/LoginModule";
 
 export const callKakaoLoginAPI = (code) => {
@@ -172,10 +168,10 @@ export const callKakaoLogoutAPI = () => {
 }
 ~~~
 **코딩 설명**
-
+___
 ## BackEnd
 ### `LoginController.java`
-~~~yml
+~~~java
     @PreAuthorize("permitAll()")
     @ApiOperation(value = "카카오 인가 코드 받아와서 액세스 토큰 발급")
     @PostMapping("/kakaocode")
@@ -212,9 +208,9 @@ export const callKakaoLogoutAPI = () => {
     }
 ~~~
 **코딩 설명**
-
+___
 ### `AccessTokenDTO.java`
-~~~yml
+~~~java
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
@@ -235,9 +231,9 @@ public class KakaoAcessTokenDTO {
 }
 ~~~
 **코딩 설명**
-
+___
 ### `LoginService.java`
-~~~yml
+~~~java
 @Service
 public class LoginService {
     private final MemberService memberService;
@@ -447,13 +443,13 @@ public class LoginService {
     }
 ~~~
 **코딩 설명**
-
-
+___
 # 프로필 등록, 수정
+___
 ## FrontEnd
 ## 탈퇴 기능
 ### `MemberAPICalls.js`
-~~~yml
+~~~java
 /* 현재 로그인 된 멤버 정보 가져오기 */
 export const getCurrentMember = (memberId) => {
 
@@ -531,9 +527,9 @@ export const deleteMember = (memberId) => {
 
 ~~~
 **코딩 설명**
-
+___
 ### `LoginProfilePage.js, ReviseProfilePage.js`
-~~~yml
+~~~java
 import style from './ProfileStyle.module.css';
 import { IoIosFemale } from 'react-icons/io';
 import { IoIosMale } from 'react-icons/io';
@@ -749,11 +745,10 @@ function ReviseProfilePage() {
 export default ReviseProfilePage;
 ~~~
 **코딩 설명**
-
-
+___
 ## BackEnd
 ### `MemberController.java`
-~~~yml
+~~~java
 @ApiOperation(value = "멤버 소셜 id로 조회")
     @GetMapping("/members/{socialLogin}/{socialId}")
     public ResponseEntity<ResponseDTO> findBySocialId(@PathVariable String social_Login,
@@ -792,9 +787,9 @@ export default ReviseProfilePage;
 
 ~~~
 **코딩 설명**
-
+___
 ### `MemberDTO.java, MemberSimpleDTO.java`
-~~~yml
+~~~java
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
@@ -858,9 +853,9 @@ public class MemberSimpleDTO {
 }
 ~~~
 **코딩 설명**
-
+___
 ### `Member.java`
-~~~yml
+~~~java
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
@@ -935,9 +930,9 @@ public class Member {
 }
 ~~~
 **코딩 설명**
-
+___
 ### `MemberRepository.java`
-~~~yml
+~~~java
 public interface MemberRepository extends JpaRepository<Member, Long> {
 
     @Query("SELECT m FROM Member AS m WHERE m.socialLogin LIKE :socialLogin AND m.socialId LIKE :socialId")
@@ -945,9 +940,9 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
     }
 ~~~
 **코딩 설명**
-
+___
 ### `MemberService.java`
-~~~yml
+~~~java
 @Service
 @AllArgsConstructor
 public class MemberService {   
@@ -1002,10 +997,11 @@ public class MemberService {
     }
 ~~~
 **코딩 설명**
-
+___
 # CI & CD , AWD 설계와 구축
-## FRONT WORKFLOW 설정
-### `workflow.yml`
+___
+## FRONT
+### `workflow.java`
 ~~~yml
 name: React build
 
@@ -1070,7 +1066,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 ~~~
 **코딩 설명**
-
+___
 ## Backend
 ### `gradle.yml`
 ~~~yml
@@ -1141,6 +1137,7 @@ jobs:
             docker run -d --name ddbnb -p 8080:8080 ${{ secrets.DOCKER_REPO }}/ddbnb:latest
 ~~~
 **코딩 설명**
+___
 ### `DockerFile`
 ~~~yml
 FROM openjdk:11
@@ -1150,7 +1147,7 @@ COPY ${JAR_FILE} app.jar
 ENTRYPOINT ["java", "-jar", "app.jar"]
 ~~~
 **코딩 설명**
-
+___
 ### `Docker.aws.json`
 ~~~yml
 {
@@ -1168,14 +1165,14 @@ ENTRYPOINT ["java", "-jar", "app.jar"]
 }
 ~~~
 **코딩 설명**
-
+___
 # 프로젝트 후기
+___
 ***저는***
 
 
-
-
 ![Typeface](../assets/img/pretentious-1.jpg){:.lead}
+___
 
 ## Attributions
 
