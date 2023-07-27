@@ -4,7 +4,7 @@ date:         14 Jul 2023
 title:        DDbnb 댕댕비엔비
 caption:      펫시터, 펫맘 모집 게시판
 description:  >
-    🖼️ DDbnb  
+    🖼️ DDbnb 펫시터 게시판 화면
 image:        /assets/img/projects/DDbnbSitter.jpg
 screenshot:
   src:        /assets/img/projects/DDbnbSitter.jpg
@@ -1174,13 +1174,15 @@ ___
 ![Typeface](../assets/img/pretentious-1.jpg){:.lead}
 ___
 
-## Attributions
+## Skills
 
-| Work                                                   | License        | Changes
-|:-------------------------------------------------------|:---------------|:-
-| [IMac vector.svg][11] by [Rafael Fernandez][12]        | [CC-BY-SA-3.0] | Apple logo removed, rasterized
-| [iPhone 6S Rose Gold.png][21]                          | [CC-BY-SA-3.0] | Desaturated
-| [iPad Air 2.png][31] by [Justinhu12][32]               | [CC-BY-SA-4.0] | Desaturated
+| Use Skills                        | reason to use            
+|:----------------------------------|:---------------    
+| [VSCode][11] and [intellij][12]   | Front and backend   
+| [Java][21] and [JavaScript][22]   | 웹프로젝트 java 공부 
+| [Oracle][31] and [MySql][32]      | 데이터베이스 사용    
+| [Github][41] and [Notion][42]     | 협업을 위해서        
+| [AWS][51] and [Docker][52]        | 사이트 배포중 가성비
 
 Screenshots can be reused under [CC-BY-SA-4.0].
 
