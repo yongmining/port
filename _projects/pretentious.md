@@ -83,6 +83,10 @@ function LoginPage() {
 export default LoginPage;
 ~~~
 **코딩 설명**
+- Kakao 와 Naver 플랫폼 이미지의 버튼들이 있습니다. 
+- Kakao 버튼을 클릭하면 KAKAO_AUTH_URI의 주소 값으로 이동합니다.
+- Kakao계정으로 로그인 할 수 있는 페이지가 나오게 됩니다.
+![Typeface](../assets/img/projects/LoginPage.jpg)
 ___
 ### `KakaoPage.js`
 ~~~java
@@ -118,6 +122,12 @@ function KakaoPage() {
 export default KakaoPage;
 ~~~
 **코딩 설명**
+- Kakao 페이지에서 로그인을 하면 code를 callKakaoLoginAPI(code)로 보낸다.
+- code에 있는 accessToken을 token으로 정의합니다.
+- token에 있는 memberId로 멤버를 조회합니다.
+-> 신규 회원일 경우 프로필을 등록하는 페이지로 가집니다.
+-> 기존 회원일 경우 메인 홈페이지로 이동하게 됩니다. 
+-> token.memberId가 "새로운 회원"일 경우 신규 회원
 ___
 ### `LoginAPi.js`
 ~~~java
@@ -168,6 +178,20 @@ export const callKakaoLogoutAPI = () => {
 }
 ~~~
 **코딩 설명**
+###### 로그인
+- backend에서 지정한 requestURL로 요청합니다.
+- 'data' 객체를 생성하여 'code'속성 인자를 'code'값으로 할당합니다.
+- fetch 함수를 사용하여 카카오 로그인 API를 호출합니다.
+- 전달된 code 값과 함께 POST 요청을 보냅니다.
+- 서버로부터 응답을 받아 result 변수에 할당합니다.
+- 만약 서버로부터의 응답이 성공적이라면 result 객체의 data 속성에 있는 token 값을 로컬 스토리지에 저장합니다.
+- Redux 액션을 디스패치하여 IS_LOGIN 타입의 액션을 발생시킵니다. 
+###### 로그아웃
+- backend에서 지정한 requestURL로 요청합니다.
+- fetch 함수를 사용하여 카카오 로그아웃 API를 호출합니다.
+- POST 요청을 보내며 서버로부터 응답을 받아 result 변수에 할당합니다.
+- 응답이 성공적이라면 로컬 스토리지에 있는 엑세스 토큰을 삭제합니다.
+- Redux 액션을 디스패치하여 IS_LOGIN 타입의 액션을 발생시킵니다. 
 ___
 ## BackEnd
 ### `LoginController.java`
@@ -190,7 +214,9 @@ ___
     }
 
     @PostMapping("/kakaologout")
-    public ResponseEntity<?> kakaoLogout(@RequestHeader("Authorization") String accessToken) {
+    public ResponseEntity<?> kakaoLogout(@RequestHeadertity<?> kakaoLogout(@RequestHeader("Authorization") String accessToken) {
+        /* 카카오 로그아웃 API 호출 */
+        boolean logoutSuccess = loginService.kakaoLogout(accessToken);("Authorization") String accessToken) {
         /* 카카오 로그아웃 API 호출 */
         boolean logoutSuccess = loginService.kakaoLogout(accessToken);
 
@@ -208,6 +234,29 @@ ___
     }
 ~~~
 **코딩 설명**
+###### 로그인
+- @PreAuthorize("permitAll()") 엔드포인트에 모든 사용자가 접근할 수 있도록 허용
+
+- @PostMapping("/kakaocode") HTTP POST 요청을 처리하는 엔드포인트
+
+- HTTP 요청의 본문으로 들어오는 JSON 형태의 데이터를 Map<String, String> 형태로 파싱하여 code 변수에 저장합니다.
+
+- loginService.getAccessToken(code.get("code")) 메서드를 호출하여 카카오 인가 코드를 사용하여 액세스 토큰을 발급합니다.
+
+- loginService.getJwtToken(kakaoToken) 메서드를 호출하여 액세스 토큰을 사용하여 JWT를 생성합니다.
+
+- 액세스 토큰과 함께 응답 데이터를 responseMap에 넣습니다.
+
+- JWT와 응답 결과를 ResponseDTO 객체에 담아 HTTP 응답으로 반환합니다.
+###### 로그아웃
+
+- @PostMapping("/kakaologout") HTTP POST 요청을 처리하는 또 다른 엔드포인트
+
+- HTTP 요청 헤더의 "Authorization"필드에서 액세스 토큰을 추출하여 accessToken 변수에 저장합니다.
+
+- loginService.kakaoLogout(accessToken) 메서드를 호출하여 로그아웃 API를 호출
+
+- 카카오 로그아웃 API의 결과에 따라 로그아웃이 성공적이었을 때와 실패했을 때 각각에 맞는 HTTP 응답을 반환합니다.
 ___
 ### `AccessTokenDTO.java`
 ~~~java
@@ -226,11 +275,25 @@ public class KakaoAcessTokenDTO {
     private int expires_in;
     private int refresh_token_expires_in;
     private String loginType;
-
-
 }
 ~~~
 **코딩 설명**
+- @AllArgsConstructor 어노테이션은 모든 필드를 인자로 받는 생성자를 자동으로 생성
+
+- @NoArgsConstructor 어노테이션은 인자 없는 기본 생성자를 자동으로 생성
+
+- @Setter 어노테이션은 자동으로 모든 멤버 변수에 대한 Setter 메서드를 생성
+-> Setter 메서드를 통해 멤버 변수의 값을 변경할 수 있습니다.
+
+- @Getter 어노테이션은 자동으로 모든 멤버 변수에 대한 Getter 메서드를 생성. 
+-> Getter 메서드를 통해 멤버 변수의 값을 읽을 수 있습니다.
+
+- @ToString 어노테이션은 자동으로 toString() 메서드를 생성
+-> toString() 메서드는 해당 클래스의 객체를 문자열로 표현할 때 사용.
+
+- @JsonIgnoreProperties(ignoreUnknown = true) 어노테이션은 JSON 직렬화 및 역직렬화 과정에서 알 수 없는 속성들을 무시하도록 지정합니다.
+
+- 카카오 액세스 토큰 정보를 담기 위한 데이터 전송 객체(DTO)입니다.
 ___
 ### `LoginService.java`
 ~~~java
@@ -443,6 +506,7 @@ public class LoginService {
     }
 ~~~
 **코딩 설명**
+
 ___
 # 프로필 등록, 수정
 ___
@@ -524,10 +588,35 @@ export const deleteMember = (memberId) => {
         }
     };
 }
-
 ~~~
 **코딩 설명**
-___
+###### 멤버 조회
+- fetch 함수를 사용하여 서버에 HTTP GET 요청을 보냅니다. 
+- requestURL로 지정된 URL로 GET 요청을 보내고, 서버로부터의 응답을 JSON 형식으로 받아 result 변수에 할당
+
+- 만약 서버로부터의 응답이 성공적이라면 result.data.members 값을 Redux 액션과 함께 디스패치하여 GET_MEMBER 타입의 액션을 발생
+
+- 멤버 정보에 닉네임(nickname)이 "새로운회원"으로 시작하는지 확인합니다. 이 조건이 참이면, "새로운회원" 문자열을 반환합니다.
+
+###### 프로필 수정
+
+
+- fetch 함수를 사용하여 서버에 HTTP PUT 요청을 보냅니다. 
+- requestURL로 지정된 URL로 PUT 요청을 보내고, 헤더에는 Accept와 Auth 필드로 이전에 가져온 token 값을 사용합니다. 
+- 업데이트할 데이터는 form 인자를 JSON 문자열로 변환하여 요청에 포함시킵니다.
+
+- 만약 서버로부터의 응답이 성공적이라면 result.data 값을 Redux 액션과 함께 디스패치하여 PUT_MEMBER 타입의 액션을 발생시킵니다.
+
+- 서버로부터의 응답이 201이면, 서버가 보낸 메시지를 알림으로 띄우고(alert(result.message)) 마이페이지로 리다이렉트(window.location.href = /mypage/${memberId}`)합니다.
+
+###### 회원 탈퇴
+- fetch 함수를 사용하여 서버에 HTTP DELETE 요청을 보냅니다. 
+- requestURL로 지정된 URL로 DELETE 요청을 보내고, 헤더에는 Content-Type, Accept, 그리고 Auth 필드로 이전에 가져온 token 값을 사용합니다.
+
+- 만약 서버로부터의 응답이 성공적이라면 result.data 값을 Redux 액션과 함께 디스패치하여 DELETE_MEMBER 타입의 액션을 발생시킵니다.
+
+- 서버로부터의 응답이 성공적이면, 현재 로그인 상태를 나타내는 Redux 상태를 변경하기 위해 IS_LOGIN 타입의 액션을 발생하고 로컬 스토리지에서 "accessToken" 키를 삭제하고(window.localStorage.removeItem('accessToken')) 페이지를 다시 로드(window.location.reload())하여 로그아웃 상태로 만듭니다.
+
 ### `LoginProfilePage.js, ReviseProfilePage.js`
 ~~~java
 import style from './ProfileStyle.module.css';
@@ -745,6 +834,9 @@ function ReviseProfilePage() {
 export default ReviseProfilePage;
 ~~~
 **코딩 설명**
+- 프로필 등록과 수정은 비슷하여 더 많은 내용이 들어가는 수정화면만 설명
+- 닉네임 글자수 제한을 6글자로 했으며 value 값을 바꿀 수 있게 해놨다.
+-> 다른 방법으론 defaultValue로 해도 됩니다.
 ___
 ## BackEnd
 ### `MemberController.java`
@@ -1165,13 +1257,18 @@ ___
 }
 ~~~
 **코딩 설명**
+- 컨테이너를 실행하기 위해 Elastic Beanstalk 플랫폼의 버전을 지정합니다.
+- Image 섹션은 배포할 Docker 이미지와 적용할 업데이트를 지정합니다.
+- heemanher/ddbnb 배포할 Docker 이미지의 이름으로 지정합니다.
+- 배포할 때 지정된 Docker 이미지의 최신 버전으로 업데이트하도록 지정
+- Ports 섹션은 컨테이너와 호스트 간의 포트 매핑을 정의합니다.
+
+- 컨테이너 내에서 응용 프로그램이 수신 대기하는 포트를 지정합니다.
+- 호스트(Elastic Beanstalk 인스턴스)에서 컨테이너의 포트 8080을 매핑할 호스트의 포트를 지정합니다. 이는 컨테이너 내에서 실행 중인 응용 프로그램이 호스트의 포트 8080으로부터 접근 가능하도록 합니다.
 ___
 # 프로젝트 후기
 ___
 ***저는***
-
-
-![Typeface](../assets/img/pretentious-1.jpg){:.lead}
 ___
 
 ## Skills
