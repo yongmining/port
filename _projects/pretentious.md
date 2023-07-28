@@ -240,9 +240,11 @@ ___
 - HTTP 요청의 본문으로 들어오는 JSON 형태의 데이터를 Map<String, String> 형태로 파싱하여 code 변수에 저장합니다.
 
 >loginService.getAccessToken(code.get("code")); 
+
 - 메서드를 호출하여 카카오 인가 코드를 사용하여 액세스 토큰을 발급합니다.
 
 >loginService.getJwtToken(kakaoToken); 
+
 - 메서드를 호출하여 액세스 토큰을 사용하여 JWT를 생성합니다.
 
 - 액세스 토큰과 함께 응답 데이터를 responseMap에 넣습니다.
@@ -254,6 +256,7 @@ ___
 - HTTP 요청 헤더의 "Authorization"필드에서 액세스 토큰을 추출하여 accessToken 변수에 저장합니다.
 
 >loginService.kakaoLogout(accessToken); 
+
 - 메서드를 호출하여 로그아웃 API를 호출합니다.
 
 - 카카오 로그아웃 API의 결과에 따라 로그아웃이 성공적이었을 때와 실패했을 때 각각에 맞는 HTTP 응답을 반환합니다.
@@ -513,36 +516,46 @@ public class LoginService {
 - - 보안을 위한 설정
 ###### 카카오 AccessToken 받아오기
 >RestTemplate rt = new RestTemplate(); 
+
 - RestTemplate 객체를 생성합니다. 
 - - 이 객체를 통해 HTTP 요청을 보낼 수 있습니다.
 >rt.setRequestFactory(new HttpComponentsClientHttpRequestFactory()); 
+
 - RestTemplate의 HTTP 클라이언트 요청 팩토리를 HttpComponentsClientHttpRequestFactory로 설정합니다. 이렇게 하면 Apache HttpComponents를 사용하여 HTTP 클라이언트 요청을 처리할 수 있습니다.
 
 > HttpHeaders headers = new HttpHeaders(); 
+
 - HTTP 요청 헤더를 설정하는 HttpHeaders 객체를 생성합니다.
 
 >headers.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8"); 
+
 - Content-Type 헤더를 application/x-www-form-urlencoded;charset=utf-8로 설정
 - - 이 헤더는 폼 데이터를 전송할 때 사용
 
 >MultiValueMap<String, String> params = new LinkedMultiValueMap<>(); 
+
 - HTTP 요청 파라미터를 설정하는 MultiValueMap 객체를 생성합니다. MultiValueMap은 여러 개의 값을 하나의 키에 매핑할 수 있는 자료구조입니다.
 
 > params.add("grant_type", "authorization_code"); 
+
 - 파라미터에 grant_type과 client_id, redirect_uri, code를 추가합니다. 이들은 카카오 API에 액세스 토큰을 요청할 때 필요한 정보들입니다.
 
 >ObjectMapper objectMapper = new ObjectMapper(); 
+
 - Jackson 라이브러리의 ObjectMapper 객체를 생성합니다. 이 객체를 이용하여 JSON 문자열을 Java 객체로 변환할 수 있습니다.
 
 >kakaoToken = objectMapper.readValue(accessTokenResponse.getBody(), KakaoAcessTokenDTO.class); 
+
 - accessTokenResponse에서 응답 데이터를 가져와서 ObjectMapper를 사용하여 JSON 문자열을 KakaoAcessTokenDTO 객체로 변환합니다. ObjectMapper의 readValue() 메서드를 사용하여 JSON 문자열과 변환할 클래스(KakaoAcessTokenDTO.class)를 지정합니다.
 - 카카오 API에 액세스 토큰을 요청하고, 응답으로 받은 JSON 데이터를 Java 객체로 변환하여 KakaoAcessTokenDTO 객체로 반환합니다. 이후 KakaoAcessTokenDTO 객체에 로그인 타입을 설정하고 최종적으로 반환합니다.
 ###### 카카오 프로필 받아오기
 >headers.add("Authorization", "Bearer " + accessToken); 
+
 - 액세스 토큰을 HTTP 요청 헤더의 "Authorization" 필드에 "Bearer" 타입으로 추가합니다. 
 - - API 호출에 필요한 인증 정보를 제공합니다.
 
 >HttpEntity<MultiValueMap<String, String>> kakaoProfileRequest = new HttpEntity<>(headers);
+
 - HTTP 요청의 엔티티를 생성합니다. 이 엔티티에는 앞서 설정한 헤더만 포함되며, 바디는 비어있는 MultiValueMap으로 처리됩니다.
 
 > ResponseEntity<String> kakaoProfileResponse = rt.exchange(
@@ -550,33 +563,41 @@ public class LoginService {
 HttpMethod.POST, 
 kakaoProfileRequest, 
 String.class);: 
+
 - 앞서 생성한 HttpEntity와 함께, RestTemplate의 exchange() 메서드를 사용하여 카카오 API에 사용자 프로필 정보를 요청하고 응답을 받습니다. 요청은 HTTP POST 메서드로 보내집니다. 응답은 ResponseEntity<String> 타입으로 받으며, 이는 JSON 형태의 문자열 데이터를 포함하게 됩니다.
 ###### 프로필 이미지 변경
 >ResponseEntity<byte[]> profileImageResponse = rt.exchange("https://api.dicebear.com/6.x/thumbs/png?seed=" + imageUrl, 
 HttpMethod.GET, 
 profileImageRequest, 
 byte[].class); 
+
 - DiceBear API에 프로필 이미지를 요청하고 응답을 받습니다. 요청은 HTTP GET 메서드로 보내집니다. 응답은 ResponseEntity<byte[]> 타입으로 받으며, 이는 바이트 배열 형태의 이미지 데이터를 포함하게 됩니다.
 
 >byte[] profileImage = profileImageResponse.getBody(); 
+
 - 응답에서 받아온 프로필 이미지 데이터를 byte[] 배열로 저장합니다.
 
 >replaceFileName = fileUploadUtils.saveFile(profileImage);
+
 - 이미지 데이터를 파일로 저장하는 fileUploadUtils.saveFile() 메서드를 호출하여 프로필 이미지를 서버에 저장합니다. 저장한 파일의 이름은 replaceFileName 변수에 저장됩니다.
 ###### 사용자의 JWT 토큰을 가져오고 업데이트
 > KakaoProfileDTO kakaoProfileDTO = findKakaoProfile(kakaoToken.getAccess_token());
+
 - 주어진 액세스 토큰(kakaoToken.getAccess_token())을 사용하여 findKakaoProfile() 메서드를 호출하여 Kakao API로부터 사용자의 프로필 정보를 가져옵니다. 이 정보는 KakaoProfileDTO 객체로 저장됩니다.
 
 >if (memberService.findBySocialId("KAKAO", String.valueOf(kakaoProfileDTO.getId())) == null) { ... } 
+
 - 해당 유저의 가입 이력이 없을 경우를 체크합니다. findBySocialId() 메서드를 사용하여 "KAKAO" 소셜 로그인과 사용자의 카카오 ID를 이용하여 멤버를 조회합니다. 
 멤버가 없으면 새로운 회원으로 가입 처리합니다.
 
 - 가입 이력이 없을 경우, 새로운 멤버를 등록하고 기본 정보를 설정합니다. 카카오 API에서 가져온 프로필 정보를 활용하여 새로운 멤버를 생성하고, 닉네임이 "새로원회원"으로 등록되며 가입 정보 및 액세스 토큰, 리프레시 토큰 등의 정보를 설정합니다.
 
 >Member foundmember = memberService.findBySocialId("KAKAO", String.valueOf(kakaoProfileDTO.getId())); 
+
 - 소셜 아이디로 멤버를 조회하여 가져옵니다. 
 - - 이미 가입된 멤버인 경우, 해당 멤버를 가져옵니다.
 >kakaoToken.setMemberId(foundmember.getMemberId()); 
+
 - kakaoToken 객체에 현재 멤버의 아이디를 설정합니다.
 - 이미 가입된 멤버의 액세스 토큰과 리프레시 토큰, 만료일자를 업데이트합니다. 
 만약 액세스 토큰의 만료 시간이 현재 시간 이전인 경우, renewKakaoToken() 메서드를 사용하여 새로운 액세스 토큰을 발급받고 리프레시 토큰도 업데이트합니다.
@@ -585,9 +606,11 @@ byte[].class);
 
 ###### 리프레시 토큰을 이용해 새로운 액세스 토큰을 갱신
 >params.add("refresh_token", foundMember.getRefreshToken())
+
 - refresh_token 파라미터를 foundMember.getRefreshToken()으로 설정합니다. 이는 기존에 발급받은 리프레시 토큰 값입니다.
 
 >renewToken = objectMapper.readValue(renewTokenResponse.getBody(), RenewTokenDTO.class); 
+
 - 응답으로 받은 JSON 형태의 데이터를 RenewTokenDTO 클래스 형태로 변환합니다.
 
 - Kakao API를 이용하여 기존 리프레시 토큰을 사용하여 새로운 액세스 토큰을 갱신하는 기능을 수행합니다. 새로운 액세스 토큰과 갱신된 리프레시 토큰은 이후 사용자의 인증 및 API 호출 등에 활용될 수 있습니다.
@@ -702,8 +725,10 @@ export const deleteMember = (memberId) => {
 - 만약 서버로부터의 응답이 성공적이라면 result.data 값을 Redux 액션과 함께 디스패치하여 DELETE_MEMBER 타입의 액션을 발생시킵니다.
 - 서버로부터의 응답이 성공적이면, 현재 로그인 상태를 나타내는 Redux 상태를 변경하기 위해 IS_LOGIN 타입의 액션을 발생합니다.
 >(window.localStorage.removeItem('accessToken'))
+
 - 로컬 스토리지에서 "accessToken" 키를 코드를 통해 삭제합니다.
 >(window.location.reload())
+
 - 페이지를 다시 리로드하여 로그아웃 상태로 만듭니다.
 
 ### `LoginProfilePage.js, ReviseProfilePage.js`
@@ -974,22 +999,29 @@ ___
 **코드 설명**
 ###### 회원 조회
 >headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8"))); 
+
 - 생성한 HttpHeaders 객체의 컨텐츠 타입을 JSON 형식으로 설정합니다.
 >responseMap.put("member", foundMember); 
+
 - 검색된 멤버를 responseMap에 "member"라는 키로 저장합니다.
 >return ResponseEntity.ok().headers(headers).body(new ResponseDTO(HttpStatus.OK, "소셜 아이디 검색 성공", responseMap)); 
+
 - 최종적으로 API 응답을 생성합니다. ResponseEntity를 사용하여 응답 상태 코드가 200인 응답을 생성합니다.
 ###### 프로필 등록, 수정
+
 - @PathVariable long memberId 경로 변수인 {memberId}의 값이 long 타입으로 파라미터 memberId에 바인딩됩니다.
 
 >@RequestPart(value = "image", required = false) MultipartFile image
+
 - HTTP 요청에 image 파트가 있을 경우 해당 데이터를 MultipartFile 객체로 파싱하여 image에 바인딩합니다. required = false로 설정되어 있으므로, image 파트가 없을 경우에도 API가 성공적으로 호출됩니다.
 ###### 회원 탈퇴
 >return ResponseEntity.noContent().build(); 
+
 - 최종적으로 API 응답을 생성합니다. ResponseEntity를 사용하여 응답 상태 코드가 204인 응답을 생성합니다.
 ___
 ### `MemberDTO.java, MemberSimpleDTO.java`
 ~~~java
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
@@ -1057,8 +1089,8 @@ public class MemberSimpleDTO {
 - 멤버 정보를 담기 위한 데이터 전송 객체(DTO)입니다.
 - 프로필 정보를 담기 위한 데이터 전송 객체(DTO)입니다.
 ___
-### `Member.java`
 ~~~java
+### `Member.java`
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
@@ -1153,8 +1185,10 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 - JpaRepository<Member, Long> JpaRepository를 상속하며, 제네릭으로 Member 엔티티와 Long 타입의 주키(PK)를 가리키는 타입 파라미터를 받습니다.
 - @Query 사용자 정의 쿼리를 정의하는 어노테이션입니다. 여기서는 JPQL을 사용하여 데이터베이스에서 Member 엔티티를 조회하는 쿼리를 작성하고 있습니다.
 >"SELECT m FROM Member AS m WHERE m.socialLogin LIKE :socialLogin AND m.socialId LIKE :socialId" 
+
 - JPQL 쿼리 문자열을 지정합니다. Member 엔티티에서 socialLogin과 socialId 컬럼이 주어진 값에 부분적으로 일치하는 엔티티를 조회하도록 하고 있습니다.
 >Member findBySocialId(String socialLogin, String socialId) 
+
 - findBySocialId라는 메서드를 정의하고 있습니다. 해당 메서드는 socialLogin과 socialId를 파라미터로 받아서, 해당 조건을 만족하는 멤버 엔티티를 조회하고 반환합니다.
 ___
 ### `MemberService.java`
@@ -1221,20 +1255,26 @@ public class MemberService {
 
 ###### 프로필 업데이트
 >Member member = memberRepository.findById(memberId).get(); 
+
 - 주어진 memberId에 해당하는 멤버를 데이터베이스에서 조회하여 member 변수에 할당합니다. findById(memberId) 메서드를 사용하여 데이터베이스에서 멤버를 조회하고, get() 메서드를 통해 Optional에서 멤버 객체를 가져옵니다.
 
 >member.setNickname(updateMember.getNickname()); 
+
 - updateMember 객체의 닉네임 정보로 멤버의 닉네임을 업데이트합니다. 이와 같은 방식으로 PetSitterCareer, Experience, DetailedHistory, PreferredArea 등의 프로필 정보들을 업데이트합니다.
 
 >if (image != null) { ... } 
+
 - 업데이트할 프로필 이미지가 주어진 경우에만 실행되는 블록입니다. image 객체가 null이 아닌 경우, 새로운 이미지를 업로드하고 이미지 파일의 이름을 replaceFileName 변수에 할당합니다.
 
 >return modelMapper.map(member, MemberSimpleDTO.class); 
+
 - 업데이트가 완료된 멤버를 MemberSimpleDTO 객체로 매핑하여 반환합니다. modelMapper.map() 메서드를 사용하여 멤버 엔티티를 DTO로 변환합니다. 이렇게 변환된 DTO를 클라이언트로 반환하여 프로필 정보 업데이트 결과를 알려줍니다.
 ###### 회원 탈퇴
 >Member foundMember = memberRepository.findById(memberId).get(); 
+
 - 주어진 memberId에 해당하는 멤버를 데이터베이스에서 조회하여 foundMember 변수에 할당합니다. findById(memberId) 메서드를 사용하여 데이터베이스에서 멤버를 조회하고, get() 메서드를 통해 Optional에서 멤버 객체를 가져옵니다.
 >memberRepository.delete(foundMember); 
+
 - 조회된 멤버를 데이터베이스에서 삭제합니다. delete() 메서드를 사용하여 데이터베이스에서 해당 멤버를 삭제합니다.
 
 ___
