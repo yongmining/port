@@ -1453,6 +1453,7 @@ ___
 # 프로젝트 후기
 ___
 ***저는***
+
 ___
 
 ## Skills
@@ -1465,13 +1466,14 @@ ___
 | [Github][41] and [Notion][42]     | 협업을 위해서        
 | [AWS][51] and [Docker][52]        | 사이트 배포중 가성비
 
-Screenshots can be reused under [CC-BY-SA-4.0].
 
-[11]: https://commons.wikimedia.org/wiki/File:IMac_vector.svg
-[12]: https://commons.wikimedia.org/wiki/User:TheGoldenBox
-[21]: https://commons.wikimedia.org/wiki/File:IPhone_6S_Rose_Gold.png
-[31]: https://commons.wikimedia.org/wiki/File:IPad_Air_2.png
-[32]: https://commons.wikimedia.org/wiki/User:Justinhu12
-
-[CC-BY-SA-4.0]: https://creativecommons.org/licenses/by-sa/4.0/
-[CC-BY-SA-3.0]: https://creativecommons.org/licenses/by-sa/3.0/
+[11]: https://code.visualstudio.com/
+[12]: https://www.jetbrains.com/
+[21]: https://www.java.com/ko/
+[22]: https://code.visualstudio.com/
+[31]: https://www.oracle.com/kr/
+[32]: https://www.mysql.com/
+[41]: https://github.com/
+[42]: https://www.notion.so/
+[51]: https://aws.amazon.com/
+[52]: https://www.docker.com/
