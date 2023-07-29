@@ -1369,7 +1369,9 @@ jobs:
 ___
 ## Backend
 ### `gradle.yml`
+
 ~~~yml
+
 name: Java CI & CD
 
 on:
@@ -1436,6 +1438,7 @@ jobs:
             docker rm -f $(docker ps -a -q)
             docker run -d --name ddbnb -p 8080:8080 ${{ secrets.DOCKER_REPO }}/ddbnb:latest
 ~~~
+
 **코드 설명**
 - permissions는 GitHub Actions가 리포지토리 내용을 읽을 수 있는 권한을 설정합니다.
 - uses: actions/checkout@v3는 Git 리포지토리를 체크아웃하여 코드를 가져옵니다.
