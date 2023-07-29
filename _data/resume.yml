@@ -6,7 +6,7 @@ basics:
   label: "Backend Programmer"
   picture: assets/img/me.jpg
   email: "gpsyo911@naver.com"
-  phone: "010 - 6680 - 3696"
+  #phone: "010 - 6680 - 3696"
   github: "https://github.com/yongmining_"
   summary: >
     **안녕하세요 신입 개발자 김용민 입니다.** <br>
