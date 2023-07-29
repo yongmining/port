@@ -66,7 +66,7 @@ publications:
   - name: "DDbnb 댕댕비엔비"
     publisher: "Team 5"
     releaseDate: "2023-07-14"
-    website: "https://github.com/HeeManHer/ddbnb-End",
+    website: "https://github.com/HeeManHer/ddbnb-End"
     summary: "댕댕비앤비로 소셜 로그인을 통한 펫시터, 펫맘 모집 게시판 작성하여 신청자를 구하는 프로젝트이다."
   - name: "여행제이"
     publisher: "Team 5"
