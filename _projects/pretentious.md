@@ -22,6 +22,7 @@ featured:     true
 accent_color: '#a85641'
 accent_image: /assets/img/sidebar-bg.jpg
 ---
+
 ## Table of Contents
 {:.no_toc}
 0. this unordered seed list will be replaced by toc as unordered list
