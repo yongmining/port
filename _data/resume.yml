@@ -6,7 +6,7 @@ basics:
   label: "Backend Programmer"
   picture: assets/img/me.jpg
   email: "gpsyo911@naver.com"
-  phone: "010 - 6680 - 3696"
+  #phone: "010 - 6680 - 3696"
   github: "https://github.com/yongmining_"
   summary: >
     **안녕하세요 신입 개발자 김용민 입니다.** <br>
@@ -66,8 +66,13 @@ publications:
   - name: "DDbnb 댕댕비엔비"
     publisher: "Team 5"
     releaseDate: "2023-07-14"
-    website: "https://github.com"
+    website: "https://github.com/HeeManHer/ddbnb-End",
     summary: "댕댕비앤비로 소셜 로그인을 통한 펫시터, 펫맘 모집 게시판 작성하여 신청자를 구하는 프로젝트이다."
+  - name: "여행제이"
+    publisher: "Team 5"
+    releaseDate: "2023-05-28"
+    website: "https://github.com/project-TravleJ/backend"
+    summary: "여행제이로 소셜 로그인을 하여 자신이 추천하는 코스를 게시판에 작성하여 공유 하는 프로젝트이다."
 project:
   - name: "DDbnb 댕댕비엔비"
     publisher: "Team 5"
@@ -92,3 +97,4 @@ interests:
       - "Python"
       - "C++"
       - "DeepRunning"
+      - "Mysql"

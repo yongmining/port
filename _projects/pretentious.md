@@ -12,13 +12,17 @@ screenshot:
     1920w:    /assets/img/projects/DDbnbSitter.jpg
     960w:     /assets/img/projects/DDbnbSitter@0,5.jpg
     480w:     /assets/img/projects/DDbnbSitter@0,25.jpg
-#links:
-#  - title:    Demo
-#    url:      https://qwtel.com/hydejack-pretentious/
+links:
+  - title:    Front
+    url:      https://github.com/HeeManHer/ddbnb-Front
+links:
+  - title:    Backend
+    url:      https://github.com/HeeManHer/ddbnb-End
 featured:     true
 accent_color: '#a85641'
 accent_image: /assets/img/sidebar-bg.jpg
 ---
+
 ___
 ## 프로젝트 설명
 **DDbnb 댕댕비엔비로 소셜 로그인을 통하여** <br>
@@ -1507,7 +1511,6 @@ CI&CD를 할 때는 팀원 중 한명이 수동 배포를 해본 적이 있어�
 Backend가 실행 속도가 늦어서 나중에는 개발 설정과 배포 설정으로 따로 만들어서
 실행 속도를 1분 30초에서 30초로 줄였습니다. 
 다들 먼저 끝나면 서로 도와줄게 있는지 물어보며 조언해주고 다같이 협업하는 모습이 보기 좋았습니다.***
-___
 
 ## Skills
 
