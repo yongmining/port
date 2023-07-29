@@ -89,6 +89,7 @@ export default LoginPage;
 ![Typeface](../assets/img/projects/LoginPage.jpg)
 ___
 ### `KakaoPage.js`
+
 ~~~java
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -515,10 +516,12 @@ public class LoginService {
 - Spring의 @Value 어노테이션을 사용하여 주어진 프로퍼티 파일(application.properties 또는 application.yml)에서 값을 읽어옵니다. ${oauth.Kakao.client-id}는 프로퍼티 파일에 설정된 oauth.Kakao.client-id 키의 값을 가져옵니다. 해당 값은 KAKAO_CLIENT_ID 변수에 할당됩니다.
 - - 보안을 위한 설정
 ###### 카카오 AccessToken 받아오기
+
 >RestTemplate rt = new RestTemplate(); 
 
 - RestTemplate 객체를 생성합니다. 
 - - 이 객체를 통해 HTTP 요청을 보낼 수 있습니다.
+
 >rt.setRequestFactory(new HttpComponentsClientHttpRequestFactory()); 
 
 - RestTemplate의 HTTP 클라이언트 요청 팩토리를 HttpComponentsClientHttpRequestFactory로 설정합니다. 이렇게 하면 Apache HttpComponents를 사용하여 HTTP 클라이언트 요청을 처리할 수 있습니다.
@@ -548,7 +551,9 @@ public class LoginService {
 
 - accessTokenResponse에서 응답 데이터를 가져와서 ObjectMapper를 사용하여 JSON 문자열을 KakaoAcessTokenDTO 객체로 변환합니다. ObjectMapper의 readValue() 메서드를 사용하여 JSON 문자열과 변환할 클래스(KakaoAcessTokenDTO.class)를 지정합니다.
 - 카카오 API에 액세스 토큰을 요청하고, 응답으로 받은 JSON 데이터를 Java 객체로 변환하여 KakaoAcessTokenDTO 객체로 반환합니다. 이후 KakaoAcessTokenDTO 객체에 로그인 타입을 설정하고 최종적으로 반환합니다.
+
 ###### 카카오 프로필 받아오기
+
 >headers.add("Authorization", "Bearer " + accessToken); 
 
 - 액세스 토큰을 HTTP 요청 헤더의 "Authorization" 필드에 "Bearer" 타입으로 추가합니다. 
@@ -562,7 +567,7 @@ public class LoginService {
     "https://kapi.kakao.com/v2/user/me", 
 HttpMethod.POST, 
 kakaoProfileRequest, 
-String.class);: 
+String.class);:
 
 - 앞서 생성한 HttpEntity와 함께, RestTemplate의 exchange() 메서드를 사용하여 카카오 API에 사용자 프로필 정보를 요청하고 응답을 받습니다. 요청은 HTTP POST 메서드로 보내집니다. 응답은 ResponseEntity<String> 타입으로 받으며, 이는 JSON 형태의 문자열 데이터를 포함하게 됩니다.
 ###### 프로필 이미지 변경
