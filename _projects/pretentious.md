@@ -131,8 +131,8 @@ export default KakaoPage;
 - - token.memberId가 "새로운 회원"일 경우 신규 회원
 ___
 ### `LoginAPi.js`
-~~~javascript
 
+~~~javascript
 import { IS_LOGIN } from "../modules/LoginModule";
 
 export const callKakaoLoginAPI = (code) => {
@@ -157,7 +157,6 @@ export const callKakaoLoginAPI = (code) => {
         }
     };
 }
-
 export const callKakaoLogoutAPI = () => {
 
     const requestURL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/login/kakaologout`;
