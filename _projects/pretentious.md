@@ -630,7 +630,7 @@ ___
 ## FrontEnd
 ## 탈퇴 기능
 ### `MemberAPICalls.js`
-~~~java
+~~~javascript
 /* 현재 로그인 된 멤버 정보 가져오기 */
 export const getCurrentMember = (memberId) => {
 
@@ -737,7 +737,7 @@ export const deleteMember = (memberId) => {
 - 페이지를 다시 리로드하여 로그아웃 상태로 만듭니다.
 
 ### `LoginProfilePage.js, ReviseProfilePage.js`
-~~~java
+~~~javascript
 import style from './ProfileStyle.module.css';
 import { IoIosFemale } from 'react-icons/io';
 import { IoIosMale } from 'react-icons/io';
@@ -1026,8 +1026,7 @@ ___
 ___
 ### `MemberDTO.java, MemberSimpleDTO.java`
 
-~~~java
-
+~~~yml
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
