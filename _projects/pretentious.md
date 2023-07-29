@@ -133,9 +133,9 @@ ___
 ### `LoginAPi.js`
 
 ~~~javascript
-import { IS_LOGIN } from "../modules/LoginModule";
+    import { IS_LOGIN } from "../modules/LoginModule";
 
-export const callKakaoLoginAPI = (code) => {
+    export const callKakaoLoginAPI = (code) => {
 
     const requestURL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/login/kakaocode`;
 
@@ -157,7 +157,7 @@ export const callKakaoLoginAPI = (code) => {
         }
     };
 }
-export const callKakaoLogoutAPI = () => {
+    export const callKakaoLogoutAPI = () => {
 
     const requestURL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/login/kakaologout`;
 
