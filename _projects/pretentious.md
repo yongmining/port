@@ -1025,6 +1025,7 @@ ___
 - 최종적으로 API 응답을 생성합니다. ResponseEntity를 사용하여 응답 상태 코드가 204인 응답을 생성합니다.
 ___
 ### `MemberDTO.java, MemberSimpleDTO.java`
+
 ~~~java
 
 @AllArgsConstructor
@@ -1089,6 +1090,7 @@ public class MemberSimpleDTO {
     private String socialLogin;
 }
 ~~~
+
 **코드 설명**
 ###### 멤버, 프로필
 - 멤버 정보를 담기 위한 데이터 전송 객체(DTO)입니다.
