@@ -24,6 +24,7 @@ accent_image: /assets/img/sidebar-bg.jpg
 ---
 ## Table of Contents
 {:.no_toc}
+0. this unordered seed list will be replaced by toc as unordered list
 {:toc}
 ___
 ## 프로젝트 설명
