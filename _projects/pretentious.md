@@ -13,7 +13,7 @@ screenshot:
     960w:     /assets/img/projects/DDbnbSitter@0,5.jpg
     480w:     /assets/img/projects/DDbnbSitter@0,25.jpg
 links:
-  - title:    Front
+  - title:    Demo
     url:      https://github.com/HeeManHer/ddbnb-Front
 links:
   - title:    Backend
@@ -22,7 +22,10 @@ featured:     true
 accent_color: '#a85641'
 accent_image: /assets/img/sidebar-bg.jpg
 ---
-
+## Table of Contents
+{:.no_toc}
+0. this unordered seed list will be replaced by toc as unordered list
+{:toc}
 ___
 ## 프로젝트 설명
 **DDbnb 댕댕비엔비로 소셜 로그인을 통하여** <br>
@@ -31,13 +34,13 @@ ___
 **신청목록에서 신청자의 정보를 보고 쪽지를 통해 협의하고 확정, 경험한 뒤 리뷰를 작성하게 됩니다.** <br>
 **마이페이지에서는 자신의 경력과 정보들을 작성하며 볼 수 있으며,** <br>
 **지금까지 작성 된 리뷰와 별점이 보이기에 신용성을 확인 할 수 있습니다.**
-___
+
 ## 맡은 역할
 **DBA 데이터베이스 구축 설계** <br>
 **소셜 로그인, 로그아웃, 탈퇴 기능** <br>
 **AccessToken을 받아서 프로필 생성, 수정 기능** <br>
 **CI & CD 구축과 AWD 배포 최적화**
-___
+
 # LOGIN 관련 CODE.
 ___
 ## Frontend CODE.
