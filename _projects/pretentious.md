@@ -39,7 +39,7 @@ ___
 ## Frontend CODE.
 ### `LoginPage.js`
 
-~~~java
+~~~javascript
 import style from './MainStyle.module.css';
 
 const KAKAO_REST_API_KEY = '202bf1013addf514255b52a8c9c69ebf';
@@ -90,7 +90,7 @@ export default LoginPage;
 ___
 ### `KakaoPage.js`
 
-~~~java
+~~~javascript
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { callKakaoLoginAPI } from "../../api/LoginAPI";
@@ -131,7 +131,8 @@ export default KakaoPage;
 - - token.memberId가 "새로운 회원"일 경우 신규 회원
 ___
 ### `LoginAPi.js`
-~~~java
+~~~javascript
+
 import { IS_LOGIN } from "../modules/LoginModule";
 
 export const callKakaoLoginAPI = (code) => {
