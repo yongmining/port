@@ -23,43 +23,11 @@ accent_color: '#a85641'
 accent_image: /assets/img/sidebar-bg.jpg
 ---
 
-<style>
-  /* Custom styling for the TOC on the right */
-  .project-toc {
-    position: fixed;
-    top: 50px;
-    right: 30px;
-    width: 250px;
-    background-color: #f9f9f9;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  .project-toc ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
-  .project-toc li {
-    margin-bottom: 5px;
-  }
-  .project-toc a {
-    color: #333;
-    text-decoration: none;
-  }
-</style>
-
-<div class="project-toc">
-  <ul>
-    <li><a href="#project-description">프로젝트 설명</a></li>
-    <li><a href="#toc-heading-1">Heading 1</a></li>
-    <li><a href="#toc-heading-2">Heading 2</a></li>
-  </ul>
-</div>
-
+* toc
+{:toc}
 ___
 
-## 프로젝트 설명 {#project-description}
+## 프로젝트 설명
 **DDbnb 댕댕비엔비로 소셜 로그인을 통하여** <br>
 **자신의 애견동물을 돌봐주는 사람을 모집하는 펫시터,** <br>
 **자신에게 애견동물을 맡길 사람을 펫맘을 모집하는 게시판을 작성하는 프로젝트입니다.** <br>
@@ -67,7 +35,7 @@ ___
 **마이페이지에서는 자신의 경력과 정보들을 작성하며 볼 수 있으며,** <br>
 **지금까지 작성 된 리뷰와 별점이 보이기에 신용성을 확인 할 수 있습니다.**
 
-## 맡은 역할 {#toc-heading-1}
+## 맡은 역할
 **DBA 데이터베이스 구축 설계** <br>
 **소셜 로그인, 로그아웃, 탈퇴 기능** <br>
 **AccessToken을 받아서 프로필 생성, 수정 기능** <br>
