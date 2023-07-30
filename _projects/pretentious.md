@@ -25,6 +25,7 @@ accent_image: /assets/img/sidebar-bg.jpg
 
 * toc
 {:toc}
+
 ___
 
 ## 프로젝트 설명
@@ -41,7 +42,7 @@ ___
 **AccessToken을 받아서 프로필 생성, 수정 기능** <br>
 **CI & CD 구축과 AWD 배포 최적화**
 
-# LOGIN 관련 CODE. {#toc-heading-2}
+# LOGIN 관련 CODE.
 ___
 ## Frontend CODE.
 ### `LoginPage.js`
