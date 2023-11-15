@@ -50,7 +50,10 @@ ChatBot 기능, Feedback CRUD, Member CRUD 구현 <br>
 
 ## 주요 내용
 ### 시스템 구성도
+
 ![800x400](/assets/img/projects/yffDiagram.PNG)
+![800x400](https://yongmining.github.io/assets/img/projects/yffDiagram.PNG)
+
 ### 시스템 흐름도
 ![800x400](/assets/img/projects/yffLogic.PNG)
 
