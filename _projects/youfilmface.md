@@ -24,6 +24,7 @@ accent_image: /assets/img/sidebar-bg.jpg
 ___
 
 ## 진행배경
+<img src=../assets/img/prjects/yffwhy alt="진행근거 이미지">
 ![800x400](/assets/img/projects/yffWHY.png) 
 - 감정 인식의 어려움
 - 우울증 증가 및 자살률 상승
