@@ -52,13 +52,14 @@ ChatBot 기능, Feedback CRUD, Member CRUD 구현 <br>
 ### 시스템 구성도
 
 ![800x400](/assets/img/projects/yffDiagram.PNG)
-![800x400](https://yongmining.github.io/assets/img/projects/yffDiagram.PNG)
 
 ### 시스템 흐름도
 ![800x400](/assets/img/projects/yffLogic.PNG)
 
 ## 결과
 ### 개인 결과 페이지
+<img src="/assets/img/projects/yffDiagram.PNG" alt="800x400">
+
 ![800x400](/assets/img/projects/yffIGO.PNG)
 첫번째 사진 : 카카오 소셜로그인, 비회원 로그인을 통해 접속<br>
 두번째 사진 : 자신의 정보를 입력, 비회원일 경우 닉네임 고정<br>
