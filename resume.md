@@ -1,6 +1,6 @@
 ---
 layout: resume
-title: About
+title: Resume
 description: >
 hide_description: false
 menu: true

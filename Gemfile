@@ -8,12 +8,12 @@ source "https://rubygems.org"
 #
 # This will help ensure the proper Jekyll version is running.
 # Happy Jekylling!
-# gem "jekyll"
-gem "github-pages"
+gem "jekyll"
+# gem "github-pages"
 
 # GitHub 페이지를 사용하려면 위의 "gem "jekyll""을 제거하고
 # 아래 줄의 주석을 해제합니다. 업그레이드하려면 'bundle update github-pages'를 실행하세요.
-gem "github-pages", group: :jekyll_plugins
+# gem "github-pages", group: :jekyll_plugins
 
 # If you have any plugins, put them here!
 group :jekyll_plugins do
