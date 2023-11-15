@@ -51,7 +51,7 @@ ChatBot 기능, Feedback CRUD, Member CRUD 구현 <br>
 ## 주요 내용
 ### 시스템 구성도
 
-![800x400](_site/assets/img/projects/YffDiagram.PNG)
+![800x400](/assets/img/projects/YffDiagram.PNG)
 
 ### 시스템 흐름도
 ![800x400](/assets/img/projects/YffLogic.PNG)
