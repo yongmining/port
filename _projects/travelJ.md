@@ -31,7 +31,7 @@ ___
 김용민 PM <br>
 신예찬 GIT <br>
 김지수 DBA <br>
-김재현 DBA <br>
+류재현 DBA <br>
 이범성 DBA <br>
 
 PM와 아이디어, Google Map API 기능, FRONT 초기세팅, <br>
@@ -41,10 +41,14 @@ DOCKER 및 CI & CD 세팅 <br>
 
 ## 주요내용
 ### 시스템 구성도
-### 시스템 흐름도
+![800x400](/assets/img/projects/TraveljDiagram.PNG) 
+
+### 시스템 DB
+![800x400](/assets/img/projects/TraveljDB.PNG) 
 
 ## 결과
 ### 개인 결과 페이지
+
 ### 팀 결과 페이지
 
 ## Use Skills & Tool

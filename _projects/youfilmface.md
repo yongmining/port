@@ -56,6 +56,9 @@ ChatBot 기능, Feedback CRUD, Member CRUD 구현 <br>
 ### 시스템 흐름도
 ![800x400](/assets/img/projects/YffLogic.PNG)
 
+### 시스템 DB
+![800x400](/assets/img/projects/YffDB.PNG)
+
 ## 결과
 ### 개인 결과 페이지
 ![800x400](/assets/img/projects/YffIGO.PNG)
