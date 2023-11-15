@@ -87,7 +87,8 @@ project:
     summary: "댕댕비앤비로 소셜 로그인을 통한 펫시터, 펫맘 모집 게시판 작성하여 신청자를 구하는 프로젝트입니다."
 skills:
   - name: "Web Development"
-    level: "Master"
+    level: "Intermediate"
+  # Master,Intermediate, Beginner
     keywords:
       - "Node.js"
       - "HTML"
@@ -127,7 +128,13 @@ skills:
       - "Slack"
 languages:
   - language: "English"
-    fluency: "Native speaker"
+    fluency: "Limited Working Proficiency"
+  #Native Speaker (모국어 사용자)
+  #Full Professional Proficiency (전문적인 숙련도)
+  #Professional Working Proficiency (직업적인 숙련도)
+  #Limited Working Proficiency (제한된 직업적인 숙련도)
+  #Elementary Proficiency (기초 숙련도)
+  #No Proficiency (숙련도 없음)
 interests:
   - name: "Computer Vision"
     keywords:
