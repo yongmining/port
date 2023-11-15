@@ -5,18 +5,16 @@ title:        TravleJ 여행제이
 caption:      일본 여행 명소 추천 게시판
 description:  >
     🖼️ 여행제이 메인 화면
-image:        /assets/img/projects/DDbnbSitter.jpg
+image:        /assets/img/projects/TraveljMain.PNG
 screenshot:
-  src:        /assets/img/projects/DDbnbSitter.jpg
+  src:        /assets/img/projects/TraveljMain.PNG
   srcset:
-    1920w:    /assets/img/projects/DDbnbSitter.jpg
-    960w:     /assets/img/projects/DDbnbSitter@0,5.jpg
-    480w:     /assets/img/projects/DDbnbSitter@0,25.jpg
+    1920w:    /assets/img/projects/TraveljMain.PNG
+    960w:     /assets/img/projects/TraveljMain.PNG
+    480w:     /assets/img/projects/TraveljMain.PNG
 links:
-  - title: Frontend
-    url: https://github.com/HeeManHer/ddbnb-Front
-  - title: Backend
-    url: https://github.com/HeeManHer/ddbnb-End
+  - title: Github
+    url: https://github.com/project-TravleJ
     
 accent_color: '#a85641'
 accent_image: /assets/img/sidebar-bg.jpg
