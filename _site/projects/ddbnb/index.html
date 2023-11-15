@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en"><!--
+ __  __                __                                     __
+/\ \/\ \              /\ \             __                    /\ \
+\ \ \_\ \   __  __    \_\ \      __   /\_\      __       ___ \ \ \/'\
+ \ \  _  \ /\ \/\ \   /'_` \   /'__`\ \/\ \   /'__`\    /'___\\ \ , <
+  \ \ \ \ \\ \ \_\ \ /\ \L\ \ /\  __/  \ \ \ /\ \L\.\_ /\ \__/ \ \ \\`\
+   \ \_\ \_\\/`____ \\ \___,_\\ \____\ _\ \ \\ \__/.\_\\ \____\ \ \_\ \_\
+    \/_/\/_/ `/___/> \\/__,_ / \/____//\ \_\ \\/__/\/_/ \/____/  \/_/\/_/
+                /\___/                \ \____/
+                \/__/                  \/___/
+
+Powered by Hydejack v7.5.2 <https://qwtel.com/hydejack/>
+-->
+
+
+
+
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+
+  
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>DDbnb 댕댕비엔비 | YongMin</title>
+<meta name="generator" content="Jekyll v4.3.2" />
+<meta property="og:title" content="DDbnb 댕댕비엔비" />
+<meta name="author" content="Yongmining" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="🖼️ DDbnb 펫시터 게시판 화면" />
+<meta property="og:description" content="🖼️ DDbnb 펫시터 게시판 화면" />
+<link rel="canonical" href="http://localhost:4000/projects/ddbnb/" />
+<meta property="og:url" content="http://localhost:4000/projects/ddbnb/" />
+<meta property="og:site_name" content="YongMin" />
+<meta property="og:image" content="http://localhost:4000/assets/img/projects/DDbnbSitter.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-07-14T00:00:00+09:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="http://localhost:4000/assets/img/projects/DDbnbSitter.jpg" />
+<meta property="twitter:title" content="DDbnb 댕댕비엔비" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Yongmining"},"dateModified":"2023-07-14T00:00:00+09:00","datePublished":"2023-07-14T00:00:00+09:00","description":"🖼️ DDbnb 펫시터 게시판 화면","headline":"DDbnb 댕댕비엔비","image":"http://localhost:4000/assets/img/projects/DDbnbSitter.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/projects/ddbnb/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/me.jpg"},"name":"Yongmining"},"url":"http://localhost:4000/projects/ddbnb/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+  
+    <meta name="keywords" content="">
+  
+
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="YongMin">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<meta name="application-name" content="YongMin">
+<meta name="msapplication-config" content="/assets/ieconfig.xml">
+
+
+<meta name="theme-color" content="#a85641">
+
+
+<meta name="generator" content="Hydejack v7.5.2">
+
+<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="YongMin" />
+
+
+
+<link rel="alternate" href="http://localhost:4000/projects/ddbnb/" hreflang="en">
+
+<link rel="shortcut icon" href="/assets/icons/favicon.ico">
+<link rel="apple-touch-icon" href="/assets/icons/icon.png">
+
+<link rel="manifest" href="/assets/manifest.json">
+
+
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+
+
+
+
+
+
+<link id="_katexJS"  rel="dns-prefetch" href="/assets/bower_components/katex/dist/katex.min.js">
+<link id="_katexCSS" rel="dns-prefetch" href="/assets/bower_components/katex/dist/katex.min.css">
+
+<script>
+  function stdOnEnd(n,e){n.onload=function(){this.onerror=this.onload=null,e(null,n)},n.onerror=function(){this.onerror=this.onload=null,e(new Error("Failed to load "+this.src),n)}}function ieOnEnd(n,e){n.onreadystatechange=function(){"complete"!=this.readyState&&"loaded"!=this.readyState||(this.onreadystatechange=null,e(null,n))}}window.setRelStylesheet=function(n){function e(){this.rel="stylesheet"}var o=document.getElementById(n);o.addEventListener?o.addEventListener("load",e,!1):o.onload=e},window._loaded=!1,window.loadJSDeferred=function(n,e){function o(){window._loaded=!0;var o=document.createElement("script");o.src=n,e&&(("onload"in o?stdOnEnd:ieOnEnd)(o,e),o.onload||stdOnEnd(o,e));var t=document.scripts[0];t.parentNode.insertBefore(o,t)}window._loaded?o():window.addEventListener?window.addEventListener("load",o,!1):window.onload=o};
+!function(a){"use strict";var b=function(b,c,d){function e(a){return h.body?a():void setTimeout(function(){e(a)})}function f(){i.addEventListener&&i.removeEventListener("load",f),i.media=d||"all"}var g,h=a.document,i=h.createElement("link");if(c)g=c;else{var j=(h.body||h.getElementsByTagName("head")[0]).childNodes;g=j[j.length-1]}var k=h.styleSheets;i.rel="stylesheet",i.href=b,i.media="only x",e(function(){g.parentNode.insertBefore(i,c?g:g.nextSibling)});var l=function(a){for(var b=i.href,c=k.length;c--;)if(k[c].href===b)return a();setTimeout(function(){l(a)})};return i.addEventListener&&i.addEventListener("load",f),i.onloadcssdefined=l,l(f),i};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);
+!function(a){if(a.loadCSS){var b=loadCSS.relpreload={};if(b.support=function(){try{return a.document.createElement("link").relList.supports("preload")}catch(b){return!1}},b.poly=function(){for(var b=a.document.getElementsByTagName("link"),c=0;c<b.length;c++){var d=b[c];"preload"===d.rel&&"style"===d.getAttribute("as")&&(a.loadCSS(d.href,d,d.getAttribute("media")),d.rel=null)}},!b.support()){b.poly();var c=a.setInterval(b.poly,300);a.addEventListener&&a.addEventListener("load",function(){b.poly(),a.clearInterval(c)}),a.attachEvent&&a.attachEvent("onload",function(){a.clearInterval(c)})}}}(this);
+
+  window._noPushState = false;
+  window._noDrawer = false;
+</script>
+
+<!--[if gt IE 8]><!---->
+
+
+<script>
+  WebFontConfig = {
+    
+    google: {
+      families: ['Roboto+Slab:700','Noto+Sans:400,400i,700,700i']
+    },
+    
+
+    custom: {
+      families: ['icomoon'],
+      urls: ['/assets/icomoon/style.css']
+    }
+  };
+  (function(d) {
+    var wf = d.createElement('script'), s = d.scripts[0];
+    wf.src = "/assets/bower_components/webfontloader/webfontloader.js";
+    s.parentNode.insertBefore(wf, s);
+  }(document));
+</script>
+<!--<![endif]-->
+
+<noscript>
+  
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:700%7CNoto+Sans:400,400i,700,700i">
+    <style>
+      html { font-family: Noto Sans, Helvetica, Arial, sans-serif }
+      h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .heading { font-family: Roboto Slab, Helvetica, Arial, sans-serif }
+    </style>
+  
+
+  <link rel="stylesheet" href="/assets/icomoon/style.css">
+</noscript>
+
+<!--[if gt IE 8]><!---->
+
+
+
+  <link rel="stylesheet" href="/assets/css/hydejack-7.5.2.css">
+
+
+
+<style id="_pageStyle">
+
+.content a:not(.btn){color:#a85641;border-color:rgba(168,86,65,.2)}.content a:not(.btn):hover{border-color:#a85641}:focus{outline-color:#a85641}.btn-primary{color:#fff;background-color:#a85641;border-color:#a85641}.btn-primary:focus,.btn-primary.focus{box-shadow:0 0 0 3px rgba(168,86,65,.5)}.btn-primary:hover,.btn-primary.hover{color:#fff;background-color:#8c4836;border-color:#8c4836}.btn-primary:disabled,.btn-primary.disabled{color:#fff;background-color:#a85641;border-color:#a85641}.btn-primary:active,.btn-primary.active{color:#fff;background-color:#8c4836;border-color:#8c4836}::selection{color:#fff;background:#a85641}::-moz-selection{color:#fff;background:#a85641}
+</style>
+
+<!--<![endif]-->
+
+
+
+<script type="module">
+    document.querySelector('hy-push-state').addEventListener('load', () => {
+        let tocElement = document.getElementById("markdown-toc");
+  
+        if(tocElement){
+            let affixedDiv = document.createElement("div");
+            affixedDiv.style.position = "relative";
+            affixedDiv.style.top = "-1rem";
+            tocElement.parentNode.insertBefore(affixedDiv, tocElement);
+  
+            let headerList = document.getElementsByClassName("permalink");
+            let prevElement;
+            window.addEventListener("scroll", () => {
+                let hurdleTop = affixedDiv.getBoundingClientRect().top;
+                if(hurdleTop <= 0) tocElement.classList.add("affix");
+                else tocElement.classList.remove("affix");
+  
+                for(let i=0;i<headerList.length;i++){
+                    if(headerList[i].getBoundingClientRect().top >= 0){
+                    prevElement?.style.removeProperty("font-weight");
+                    let tocId = "markdown-toc-" + headerList[i].parentNode.id;
+                    prevElement = document.getElementById(tocId);
+                    prevElement.style.fontWeight = "bold";;
+  
+                    break;
+                    }
+                }
+            });
+        }
+    });
+    </script>
+  
+
+</head>
+
+<body>
+  <div class="navbar fixed-top">
+  <div class="content">
+    <div class="nav-btn-bar">
+      <span class="sr-only">Jump to:</span>
+      <a id="_menu" class="nav-btn no-hover" href="#_navigation">
+        <span class="sr-only">Navigation</span>
+        <span class="icon-menu"></span>
+      </a>
+    </div>
+  </div>
+</div>
+
+
+<hy-push-state>
+  <main
+    id="_main"
+    class="content fade-in layout-project"
+    role="main"
+    data-color="#a85641"
+    data-theme-color=""
+    
+      data-image="/assets/img/sidebar-bg.jpg"
+      data-overlay
+    
+    >
+    
+
+
+
+<article class="page" role="article" vocab="http://schema.org/" typeof="CreativeWork">
+  <meta property="mainEntityOfPage" content="http://localhost:4000/projects/ddbnb/"/>
+
+  <header>
+    <h1 class="page-title" property="name">DDbnb 댕댕비엔비</h1>
+
+    <p class="post-date heading">
+      
+      
+        <a href="/projects/" class="flip-title" property="genre">Projects</a>
+        |
+      
+      
+      <time datetime="2023-07-14T00:00:00+09:00" property="datePublished">2023</time>
+      <span class="fr">
+        <span class="sr-only">| Links:</span>
+        
+          <a class="external" href="https://github.com/HeeManHer/ddbnb-Front" property="sameAs">Frontend</a>
+          |
+        
+          <a class="external" href="https://github.com/HeeManHer/ddbnb-End" property="sameAs">Backend</a>
+          
+        
+      </span>
+    </p>
+
+    
+    <div class="img lead sixteen-nine">
+      
+        
+  
+
+  
+
+  
+  <img
+    src="/assets/img/projects/DDbnbSitter.jpg"
+    
+    alt="DDbnb 댕댕비엔비"
+    srcset="/assets/img/projects/DDbnbSitter.jpg 1920w,/assets/img/projects/DDbnbSitter@0,5.jpg 960w,/assets/img/projects/DDbnbSitter@0,25.jpg 480w"
+    sizes="(min-width: 90em) 48rem, (min-width: 54em) 42rem, (min-width: 42em) 38rem, 100vw"
+    property="image"
+  />
+
+
+      
+    </div>
+
+    
+
+
+
+  
+    <p class="message" property="description">
+      🖼️ DDbnb 펫시터 게시판 화면
+
+    </p>
+  
+
+
+    <meta property="disambiguatingDescription" content="펫시터, 펫맘 모집 게시판"/>
+  </header>
+
+  <hr />
+
+<h2 id="진행배경">진행배경</h2>
+
+<h2 id="프로젝트-기간">프로젝트 기간</h2>
+<p>2023.05.16. ~ 2023.07.14.</p>
+
+<h2 id="팀-구성-및-역할">팀 구성 및 역할</h2>
+<p>이동주 PM <br />
+허희만 Git<br />
+김용민 DBA <br />
+이준성 DBA <br />
+최명건 DBA <br /></p>
+
+<p>DBA와 아이디어, 서브 기획을 맡게 되었으며, <br />
+KAKAO &amp; NAVER 소셜 로그인, MEMBER CRUD, BACKEND초기 세팅, <br />
+CI &amp; CD, Docker, AWS EC2 연결 및 배포, AWS S3 배포<br /></p>
+
+<h2 id="주요내용">주요내용</h2>
+<h3 id="시스템-구성도">시스템 구성도</h3>
+<h3 id="시스템-흐름도">시스템 흐름도</h3>
+
+<h2 id="결과">결과</h2>
+<h3 id="개인-결과-페이지">개인 결과 페이지</h3>
+<h3 id="팀-결과-페이지">팀 결과 페이지</h3>
+
+<h2 id="use-skills--tool">Use Skills &amp; Tool</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Skills &amp; Tool</th>
+      <th style="text-align: left">reason to use</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><a href="https://code.visualstudio.com/">VSCode</a> and <a href="https://www.jetbrains.com/">intellij</a></td>
+      <td style="text-align: left">Front and backend Tool</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="https://www.java.com/ko/">Java</a> and <a href="https://code.visualstudio.com/">JavaScript</a></td>
+      <td style="text-align: left">웹프로젝트 와 백엔드</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="https://spring.io/projects/spring-framework">Spring Framework</a> and <a href="https://spring.io/projects/spring-boot">Spring Boot</a></td>
+      <td style="text-align: left">Java</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="https://spring.io/projects/spring-data-jpa">Spring data JPA</a></td>
+      <td style="text-align: left">JPA</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="https://www.oracle.com/kr/">Oracle</a></td>
+      <td style="text-align: left">데이터베이스</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="https://github.com/">Github</a> and <a href="https://www.notion.so/">Notion</a></td>
+      <td style="text-align: left">협업 Tool</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="https://miro.com/">Miro</a> and <a href="https://www.figma.com/">Figma</a></td>
+      <td style="text-align: left">협업 Tool</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="https://www.sourcetreeapp.com/">SourceTree</a> and <a href="https://www.uniondata.co.kr/">DA#5</a></td>
+      <td style="text-align: left">협업 Tool</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="https://aws.amazon.com/">AWS EC2</a> and <a href="https://aws.amazon.com/">AWS S3</a></td>
+      <td style="text-align: left">배포 기술</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="https://www.docker.com/">Docker</a></td>
+      <td style="text-align: left">배포 기술</td>
+    </tr>
+  </tbody>
+</table>
+
+
+</article>
+
+<hr class="dingbat related" />
+
+
+
+
+  
+     
+
+
+  <aside class="about related mt4 mb4" role="complementary">
+    
+    
+
+<div class="author mt4">
+  
+
+  
+    
+  
+
+  
+
+  
+  <img
+    src="/assets/img/me.jpg"
+    class="avatar"
+    alt="Yongmining"
+    srcset="/assets/img/me.jpg 1x,/assets/img/me.jpg 2x"
+    
+    
+  />
+
+
+  
+
+  
+  
+  <h2  class="page-title hr">
+    About
+  </h2>
+
+  <p><strong>안녕하세요, 신입 개발자 김용민입니다.</strong> <br />
+<strong>제가 궁금하시면 About를 봐주세요.</strong></p>
+
+
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+    
+  
+
+  
+
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li>
+  <a href="https://github.com/yongmining" title="GitHub" class="no-mark-external">
+    <span class="icon-github"></span>
+    <span class="sr-only">GitHub</span>
+  </a>
+</li>
+
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li>
+  <a href="gpsyo911@naver.com" title="Email" class="no-mark-external">
+    <span class="icon-mail"></span>
+    <span class="sr-only">Email</span>
+  </a>
+</li>
+
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li>
+  <a href="https://instagram.com/yongmining_" title="Instagram" class="no-mark-external">
+    <span class="icon-instagram"></span>
+    <span class="sr-only">Instagram</span>
+  </a>
+</li>
+
+  
+</ul>
+
+  </div>
+</div>
+
+  </aside>
+
+
+  
+
+  
+    
+
+
+
+
+  
+
+  
+    
+
+
+
+<aside class="other-projects related mb4" role="complementary">
+  <h2>Other Projects</h2>
+  <div class="columns">
+    
+    
+      <div class="column column-1-2">
+        
+
+
+
+<article class="project-card">
+  <a href="/projects/travelJ/" class="no-hover no-print-link flip-project" tabindex="-1">
+    <div class="project-card-img img sixteen-nine">
+      
+        
+  
+
+  
+
+  
+  <img
+    src="/assets/img/projects/DDbnbSitter.jpg"
+    
+    alt="TravleJ 여행제이"
+    srcset="/assets/img/projects/DDbnbSitter.jpg 1920w,/assets/img/projects/DDbnbSitter@0,5.jpg 960w,/assets/img/projects/DDbnbSitter@0,25.jpg 480w"
+    sizes="(min-width: 90em) 22.5rem, (min-width: 54em) 19.5rem, (min-width: 42em) 17.5rem, 100vw"
+    
+  />
+
+
+      
+    </div>
+  </a>
+  <h3 class="project-card-title">
+    <a href="/projects/travelJ/" class="flip-title">TravleJ 여행제이</a>
+  </h3>
+  
+    <legend class="project-card-text fine faded">일본 여행 명소 추천 게시판
+</legend>
+  
+</article>
+
+      </div>
+    
+
+    
+    
+      <div class="column column-1-2">
+        
+
+
+
+<article class="project-card">
+  <a href="/projects/youfilmface/" class="no-hover no-print-link flip-project" tabindex="-1">
+    <div class="project-card-img img sixteen-nine">
+      
+        
+  
+
+  
+
+  
+  <img
+    src="/assets/img/projects/YFF.png"
+    
+    alt="You Film Face ?"
+    srcset="/assets/img/projects/YFF.png 1920w,/assets/img/projects/YFF.png 960w,/assets/img/projects/YFF.png 480w"
+    sizes="(min-width: 90em) 22.5rem, (min-width: 54em) 19.5rem, (min-width: 42em) 17.5rem, 100vw"
+    
+  />
+
+
+      
+    </div>
+  </a>
+  <h3 class="project-card-title">
+    <a href="/projects/youfilmface/" class="flip-title">You Film Face ?</a>
+  </h3>
+  
+    <legend class="project-card-text fine faded">안면인식 및 감정분석
+</legend>
+  
+</article>
+
+      </div>
+    
+  </div>
+</aside>
+
+
+  
+
+
+    
+
+
+    <footer role="contentinfo">
+  <hr/>
+  
+    <p><small class="copyright">© 2023. Yongmining’s DevLog.
+</small></p>
+  
+  
+  
+  <hr class="sr-only"/>
+</footer>
+
+  </main>
+  
+<hy-drawer>
+  <header id="_sidebar" class="sidebar" role="banner">
+    
+    <div class="sidebar-bg sidebar-overlay" style="background-color:#a85641;background-image:url(/assets/img/sidebar-bg.jpg)"></div>
+    <div class="sidebar-sticky">
+      <div class="sidebar-about">
+        <h2 class="h1"><a href="/">YongMin</a></h2>
+        
+        
+          <p class="">
+            let’s do it till the end
+
+          </p>
+        
+      </div>
+      <nav class="sidebar-nav heading" role="navigation">
+        <span class="sr-only">Navigation:</span>
+<ul>
+  
+  
+  
+  
+    
+      <li>
+        <a
+          id="_navigation"
+          href="/resume/"
+          class="sidebar-nav-item"
+          
+          >
+          Resume
+        </a>
+      </li>
+    
+  
+    
+      <li>
+        <a
+          
+          href="/projects/"
+          class="sidebar-nav-item active"
+          
+          >
+          Projects
+        </a>
+      </li>
+    
+  
+    
+      <li>
+        <a
+          
+          href="/blog/"
+          class="sidebar-nav-item"
+          
+          >
+          Code_Review
+        </a>
+      </li>
+    
+  
+</ul>
+
+      </nav>
+
+      
+
+      <div class="sidebar-social">
+        <span class="sr-only">Social:</span>
+<ul>
+  
+    
+    
+  
+
+  
+
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li>
+  <a href="https://github.com/yongmining" title="GitHub" class="no-mark-external">
+    <span class="icon-github"></span>
+    <span class="sr-only">GitHub</span>
+  </a>
+</li>
+
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li>
+  <a href="gpsyo911@naver.com" title="Email" class="no-mark-external">
+    <span class="icon-mail"></span>
+    <span class="sr-only">Email</span>
+  </a>
+</li>
+
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li>
+  <a href="https://instagram.com/yongmining_" title="Instagram" class="no-mark-external">
+    <span class="icon-instagram"></span>
+    <span class="sr-only">Instagram</span>
+  </a>
+</li>
+
+  
+</ul>
+
+      </div>
+    </div>
+  </header>
+</hy-drawer>
+
+
+
+
+
+</hy-push-state>
+
+
+  
+
+  <!--[if gt IE 9]><!---->
+  
+  <script>loadJSDeferred('/assets/js/hydejack-7.5.2.js');</script>
+  
+  <!--<![endif]-->
+
+
+
+  
+<hr class="sr-only"/>
+<h2 class="sr-only">Templates (for web app):</h2>
+
+<template id="_animation-template">
+  <div class="animation-main fixed-top">
+    <div class="content">
+      <div class="page"></div>
+    </div>
+  </div>
+</template>
+
+<template id="_loading-template">
+  <div class="loading">
+    <span class="sr-only">Loading…</span>
+    <span class="icon-cog"></span>
+  </div>
+</template>
+
+<template id="_error-template">
+  <div class="page">
+    <h1 class="page-title">Error</h1>
+    
+    
+    <p class="lead">
+      Sorry, an error occurred while loading <a class="this-link" href=""></a>.
+
+    </p>
+  </div>
+</template>
+
+<template id="_back-template">
+  <a id="_back" class="back nav-btn no-hover">
+    <span class="sr-only">Back</span>
+    <span class="icon-arrow-left2"></span>
+  </a>
+</template>
+
+<template id="_permalink-template">
+  <a href="#" class="permalink">
+    <span class="sr-only">Permalink</span>
+    <span class="icon-link"></span>
+  </a>
+</template>
+
+
+
+</body>
+</html>
