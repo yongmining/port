@@ -5,13 +5,13 @@ title:        You Film Face ?
 caption:      안면인식 및 감정분석
 description:  >
     🖼️DeepFace API 결과 화면
-image:        /assets/img/projects/YFF.png
+image:        /assets/img/projects/YFF.PNG
 screenshot:
-  src:        /assets/img/projects/YFF.png
+  src:        /assets/img/projects/YFF.PNG
   srcset:
-    1920w:    /assets/img/projects/YFF.png
-    960w:     /assets/img/projects/YFF.png
-    480w:     /assets/img/projects/YFF.png
+    1920w:    /assets/img/projects/YFF.PNG
+    960w:     /assets/img/projects/YFF.PNG
+    480w:     /assets/img/projects/YFF.PNG
 links:
   - title: Github
     url: https://github.com/yongmining/ALL-IN-Project-fin
@@ -24,7 +24,7 @@ accent_image: /assets/img/sidebar-bg.jpg
 ___
 
 ## 진행배경
-![800x400](/assets/img/projects/yffWHY.png) 
+![800x400](/assets/img/projects/yffWHY.PNG) 
 - 감정 인식의 어려움
 - 우울증 증가 및 자살률 상승
 - 정신 건강 서비스 접근성
@@ -50,25 +50,25 @@ ChatBot 기능, Feedback CRUD, Member CRUD 구현 <br>
 
 ## 주요 내용
 ### 시스템 구성도
-![800x400](/assets/img/projects/yffDiagram.png)
+![800x400](/assets/img/projects/yffDiagram.PNG)
 ### 시스템 흐름도
-![800x400](/assets/img/projects/yffLogic.png)
+![800x400](/assets/img/projects/yffLogic.PNG)
 
 ## 결과
 ### 개인 결과 페이지
-![800x400](/assets/img/projects/yffIGO.png)
+![800x400](/assets/img/projects/yffIGO.PNG)
 첫번째 사진 : 카카오 소셜로그인, 비회원 로그인을 통해 접속<br>
 두번째 사진 : 자신의 정보를 입력, 비회원일 경우 닉네임 고정<br>
 세번째 사진 : 회원일 경우 자신의 정보를 수정 및 탈퇴 기능, 명언과 감정기록 조회<br>
 네번째 사진 : 상담 컨텐츠<br>
 오번째 사진 : 피드백 작성 및 관리자는 조회
-![800x400](/assets/img/projects/yffChat.png)
+![800x400](/assets/img/projects/yffChat.PNG)
 GptTurbo 3.5를 이용한 챗봇을 이용하여 심리 상담을 할 수 있도록 설정
 1. 파인튜닝을 통하여 할려 했으나 비용면으로 부담이 되어 중지
 2. 랭채인 라이브러리를 사용하여 Promote 설정
 
 ### 팀 결과 페이지
-![800x400](/assets/img/projects/yffTGO.png)
+![800x400](/assets/img/projects/yffTGO.PNG)
 첫번째 사진 : DeepfaceAPI를 이용하여 안면인식 및 감정분석 <br>
 두번째 사진 : 감정분석 된 결과를 통해 여러 컨텐츠 추천 및 글귀 <br>
 세번째 사진 : 유튜브 컨텐츠 추천 화면<br>
