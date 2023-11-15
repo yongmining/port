@@ -58,13 +58,21 @@ CI & CD, Docker, AWS EC2 연결 및 배포, AWS S3 배포<br>
 ## 결과
 ### 개인 결과 페이지
 ![800x400](/assets/img/projects/DDbnbIGO.PNG)
+여러 소셜 로그인 과 멤버를 CRUD 하는 모습이 담긴 이미지입니다. 
 ![800x400](/assets/img/projects/DDbnbIGOO.PNG)  
+펫맘, 펫시터 게시글로 마감, 모집 중 등 관리할 수 있습니다.
+
 ### 팀 결과 페이지
-![800x400](/assets/img/projects/DDbnbTGO.PNG)  
-![800x400](/assets/img/projects/DDbnbTGOO.PNG) 
-![800x400](/assets/img/projects/DDbnbTGOO1.PNG) 
-![800x400](/assets/img/projects/DDbnbTGOOO.PNG) 
-![800x400](/assets/img/projects/DDbnbTGOOO1.PNG) 
+![800x400](/assets/img/projects/DDbnbTGO.PNG)
+펫시터를 구하는 작성글이며, 다른 사진들은 마이페이지로 자신의 정보를 수정 또는 작성한 내용들을 관리와 조회할 수 있는 페이지입니다. 
+![800x400](/assets/img/projects/DDbnbTGOO.PNG)
+펫맘을 구하는 작성글과 리뷰, 쪽지함의 페이지
+![800x400](/assets/img/projects/DDbnbTGOO1.PNG)
+리뷰, 신청자 목록, 쪽지 등등 필요한 모달 모음
+![800x400](/assets/img/projects/DDbnbTGOOO.PNG)
+관리자 대쉬보드와 각각의 관리페이지 CRUD 화면입니다.
+![800x400](/assets/img/projects/DDbnbTGOOO1.PNG)
+관리자 페이지에 필요한 모달 모음
 
 ## Use Skills & Tool
 
