@@ -58,7 +58,7 @@ ChatBot 기능, Feedback CRUD, Member CRUD 구현 <br>
 
 ## 결과
 ### 개인 결과 페이지
-<img src="/assets/img/projects/yffDiagram.PNG" alt="800x400">
+<img src="../_site/assets/img/projects/yffDiagram.PNG" alt="800x400">
 
 ![800x400](/assets/img/projects/yffIGO.PNG)
 첫번째 사진 : 카카오 소셜로그인, 비회원 로그인을 통해 접속<br>
