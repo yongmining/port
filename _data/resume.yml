@@ -49,10 +49,37 @@ work:
     #highlights:
     # - "?"
 
+
+
+
 education:
+  - institution: "하이미디어"
+    studyType: "국비지원"
+    startDate: "Sep.2023"
+    endDate: "Nov.2023"
+    courses:
+      - Python
+      - AWS lightSail
+      - Flask, Fast API
+      - DeepLearning
+      - etc..
+
+  - institution: "메가스터디 아카데미"
+    studyType: "국비지원"
+    startDate: "Jul.2022"
+    endDate: "Dec.2023"
+    courses:
+      - BlockChain
+      - Spring Data JPA
+      - Spring Framework, boot
+      - Aws EC2, S3, Docker
+      - Oracle, Mysql
+      - React, Redux
+      - etc..
+
   - institution: "수원과학대 컴퓨터 정보과"
     # area: "Computer Information Division"
-    # studyType: ""
+    studyType: "대학교"
     startDate: "Mar.2020"
     endDate: "Feb.2023"
     gpa: "3.4"
@@ -62,7 +89,8 @@ education:
       - Python
       - Java
       - C+
-      - Etc..
+      - etc.. 
+
 publications:
   - name: "You Film Face?"
     publisher: "Team 4"
@@ -110,6 +138,7 @@ skills:
       - "AWS S3"
       - "AWS Lightsail"
       - "DOCKER"
+      - "BlockChain"
   - name: "Tool"
     level: "Master"
     keywords:
@@ -142,4 +171,5 @@ interests:
       - "C#"
       - "DeepRunning"
       - "MachinRunning"
+      - "Python"
       
