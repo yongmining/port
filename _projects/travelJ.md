@@ -40,6 +40,7 @@ ___
 | 류재현    |   DBA      |
 | 이범성    |   DBA      |
 |==========|===========|
+
 PM와 아이디어, Google Map API 기능, FRONT 초기세팅, <br>
 관리자 게시판 신고 관리 RUD, <br>
 DOCKER 및 CI & CD 세팅 <br>
