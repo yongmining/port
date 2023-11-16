@@ -44,6 +44,14 @@ ___
 이준성 DBA <br>
 최명건 DBA <br>
 
+| 이름      | 역할      | 
+|:--------- |:----------|
+| 이준성    |   DBA     |
+| 김용민    |    PM     | 
+| 최명건    |   DBA     |
+| 신현강    |   AI      |
+|==========|===========|
+
 DBA와 아이디어, 서브 기획을 맡게 되었으며, <br>
 KAKAO & NAVER 소셜 로그인, MEMBER CRUD, BACKEND초기 세팅, <br>
 CI & CD, Docker, AWS EC2 연결 및 배포, AWS S3 배포<br>
